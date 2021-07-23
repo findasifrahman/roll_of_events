@@ -1,0 +1,371 @@
+
+
+
+    <img class="img-responsive graphic-logo-img" src="https://www.navy.mil.bd/public/frontend/template/img/navy.png" style="width: 100px;">
+  <img style="width: 100%;margin-top: -190px;margin-bottom: -50px;height: 110px; object-fit: cover;" class="img-responsive" src="https://www.navy.mil.bd/public/frontend/template/img/banner.png">
+  <h1 style="font-family: kalpurush;background-color: whitesmoke; text-align: center; color: #006994;
+    font-weight: bold;padding-bottom:0 !important; margin-bottom: 0 !important;margin-top: 0 !important;">
+    Bangladesh Navy Roll of Events</h1>
+
+
+    <div style="margin-bottom: 0; width: 65em;width: 100%;padding-top: 1vh;background-color: whitesmoke;padding-bottom: 0 !important; ">
+      <form (click)="FormSubmit()"  class="example-form row" 
+        style="margin: 0 !important;padding: 0 !important; text-align: center; justify-content: center; 
+          align-items: center;width: 100% !important;" >
+        <div class="input-group" style="max-width: 55em;margin: 0 !important;padding: 0 !important; 
+        width: 100%;">
+            
+            <mat-form-field class="example-full-width my-form-field" appearance="outline"
+              style="width: 100% !important; margin-bottom: 0 !important;">
+              <input type="text" (keydown.enter)="FormSubmit()"  matInput  
+              style="width: 100% !important;font-size: medium;" placeholder="Search" [formControl]="planClient" 
+                    [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" 
+                    style="margin: 0 !important;padding: 0 !important;font-size: small;">
+                        <mat-option *ngFor="let client of filteredOptions | async" [value]="client">
+                        {{client}}
+                    </mat-option>
+                </mat-autocomplete>
+                <button mat-button  matSuffix mat-icon-button>
+                  <mat-icon style="font-size: x-large;padding-top: 0.05em;display: inline;">search</mat-icon>
+                </button>
+            </mat-form-field>                                      
+        </div>
+      </form> 
+
+    </div>
+    <div style="justify-content: center;text-align: center;margin-bottom: 1vh;">
+      <button mat-button (click)="imageClick()" [ngClass]="[bntStyle1]" style="display: inline;padding-top: 0 !important; margin-top: 0 !important;">
+        <span style="font-family:kalpurush;font-size: 16px;">Image Search</span>
+      </button>
+  
+      <button mat-button (click)="videoClick()" [ngClass]="[bntStyle2]" style="display: inline;padding-top: 0 !important; margin-top: 0 !important;">
+        <span style="font-family:kalpurush;font-size: 16px;">Video Search</span>
+      </button>
+    </div>
+
+    <!--
+  <div style="margin-bottom: 0; width: 55em;width: 100%;padding-top: 1vh;background-color: whitesmoke; ">
+    <form (click)="FormSubmit()"  class="example-form row" 
+      style="margin: 0 !important;padding: 0 !important; text-align: center; justify-content: center; 
+        align-items: center;width: 100% !important;" >
+      <div class="input-group" style="max-width: 55em;margin: 0 !important;padding: 0 !important; 
+      width: 100%;">
+          
+          <mat-form-field class="example-full-width my-form-field" appearance="outline"
+            style="width: 100% !important;">
+            <input type="text" (keydown.enter)="FormSubmit()"  matInput  
+            style="width: 100% !important;font-size: medium;" placeholder="Search" [formControl]="planClient" 
+                  [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete" 
+                  style="margin: 0 !important;padding: 0 !important;font-size: small;">
+                      <mat-option *ngFor="let client of filteredOptions | async" [value]="client">
+                      {{client}}
+                  </mat-option>
+              </mat-autocomplete>
+              <button mat-button  matSuffix mat-icon-button>
+                <mat-icon style="font-size: x-large;padding-top: 0.05em;">search</mat-icon>
+              </button>
+          </mat-form-field>                                      
+      </div>
+    </form> 
+  </div>
+-->
+
+  <mat-toolbar color="primary" style="height: 8vh;background-color: #006994 ;" >
+    <button (click)="defaultClick()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div fxShow="true" fxHide.lt-md="true">
+        <button mat-button [matMenuTriggerFor]="animals" style="font-family:merriweather;font-size: 16px;">Search By Year</button>
+        <mat-menu #animals="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="_1971">1971-1980</button>
+          <button mat-menu-item [matMenuTriggerFor]="_1980">1981-1990</button>
+          <button mat-menu-item [matMenuTriggerFor]="_1990">1991-2000</button>
+          <button mat-menu-item [matMenuTriggerFor]="_2000">2001-2010</button>
+          <button mat-menu-item [matMenuTriggerFor]="_2010">2011-2020</button>
+        </mat-menu>
+        <mat-menu #_1971="matMenu">
+          <button mat-menu-item (click)="_yearClick(1971)" >1971</button>
+          <button mat-menu-item (click)="_yearClick(1972)">1972</button>
+          <button mat-menu-item (click)="_yearClick(1973)">1973</button>
+          <button mat-menu-item (click)="_yearClick(1974)">1974</button>
+          <button mat-menu-item (click)="_yearClick(1975)">1975</button>
+          <button mat-menu-item (click)="_yearClick(1976)">1976</button>
+          <button mat-menu-item (click)="_yearClick(1977)">1977</button>
+          <button mat-menu-item (click)="_yearClick(1978)">1978</button>
+          <button mat-menu-item (click)="_yearClick(1979)">1979</button>
+          <button mat-menu-item (click)="_yearClick(1980)">1980</button>
+        </mat-menu>
+        <mat-menu #_1980="matMenu">
+          <button mat-menu-item (click)="_yearClick(1981)">1981</button>
+          <button mat-menu-item (click)="_yearClick(1982)">1982</button>
+          <button mat-menu-item (click)="_yearClick(1983)">1983</button>
+          <button mat-menu-item (click)="_yearClick(1984)">1984</button>
+          <button mat-menu-item (click)="_yearClick(1985)">1985</button>
+          <button mat-menu-item (click)="_yearClick(1986)">1986</button>
+          <button mat-menu-item (click)="_yearClick(1987)">1987</button>
+          <button mat-menu-item (click)="_yearClick(1988)">1988</button>
+          <button mat-menu-item (click)="_yearClick(1989)">1989</button>
+          <button mat-menu-item (click)="_yearClick(1990)">1990</button>
+        </mat-menu>
+        <mat-menu #_1990="matMenu">
+          <button mat-menu-item (click)="_yearClick(1991)">1991</button>
+          <button mat-menu-item (click)="_yearClick(1992)">1992</button>
+          <button mat-menu-item (click)="_yearClick(1993)">1993</button>
+          <button mat-menu-item (click)="_yearClick(1994)">1994</button>
+          <button mat-menu-item (click)="_yearClick(1995)">1995</button>
+          <button mat-menu-item (click)="_yearClick(1996)">1996</button>
+          <button mat-menu-item (click)="_yearClick(1997)">1997</button>
+          <button mat-menu-item (click)="_yearClick(1998)">1998</button>
+          <button mat-menu-item (click)="_yearClick(1999)">1999</button>
+          <button mat-menu-item (click)="_yearClick(2000)">2000</button>
+        </mat-menu>
+        <mat-menu #_2000="matMenu">
+          <button mat-menu-item (click)="_yearClick(2001)">2001</button>
+          <button mat-menu-item (click)="_yearClick(2002)">2002</button>
+          <button mat-menu-item (click)="_yearClick(2003)">2003</button>
+          <button mat-menu-item (click)="_yearClick(2004)">2004</button>
+          <button mat-menu-item (click)="_yearClick(2005)">2005</button>
+          <button mat-menu-item (click)="_yearClick(2006)">2006</button>
+          <button mat-menu-item (click)="_yearClick(2007)">2007</button>
+          <button mat-menu-item (click)="_yearClick(2008)">2008</button>
+          <button mat-menu-item (click)="_yearClick(2009)">2009</button>
+          <button mat-menu-item (click)="_yearClick(2010)">2010</button>
+        </mat-menu>
+        <mat-menu #_2010="matMenu">
+          <button mat-menu-item (click)="_yearClick(2011)">2011</button>
+          <button mat-menu-item (click)="_yearClick(2012)">2012</button>
+          <button mat-menu-item (click)="_yearClick(2013)">2013</button>
+          <button mat-menu-item (click)="_yearClick(2014)">2014</button>
+          <button mat-menu-item (click)="_yearClick(2015)">2015</button>
+          <button mat-menu-item (click)="_yearClick(2016)">2016</button>
+          <button mat-menu-item (click)="_yearClick(2017)">2017</button>
+          <button mat-menu-item (click)="_yearClick(2018)">2018</button>
+          <button mat-menu-item (click)="_yearClick(2019)">2019</button>
+          <button mat-menu-item (click)="_yearClick(2020)">2020</button>
+        </mat-menu>
+        <mat-menu #_2021="matMenu">
+          <button mat-menu-item (click)="_yearClick(2021)">2021</button>
+        </mat-menu>
+
+        <button mat-button (click)="nationnavyclik()" [ngClass]="[bntStyle3]">
+          <span style="font-family:merriweather;font-size: 16px;">Nation & the Navy</span>
+        </button>
+        <button mat-button (click)="navyhorizonClick()" [ngClass]="[bntStyle3]">
+          <span style="font-family:merriweather;font-size: 16px;">Navy beyond horizon</span>
+        </button>
+        <button mat-button (click)="_yearClick(2021)" [ngClass]="[bntStyle3]">
+          <span style="font-family:merriweather;font-size: 16px;">2021</span>
+        </button>
+      
+
+    </div>
+    <span class="example-spacer"></span>
+
+    <span style="font-size: medium;font-family:merriweather;" (click)="gotoadmin()">Bangladesh Navy Roll of events</span>
+
+  </mat-toolbar>
+
+
+
+<mat-sidenav-container fxFlexFill class="example-container" >
+
+  <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+    <div fxLayout="column">
+      <a mat-button routerLink="/about-us">About us</a>
+      <a mat-button routerLink="/prices">Prices</a>
+      <a mat-button routerLink="/start-page">Start page</a>
+      <a mat-button routerLink="/offer">Offer</a>
+      <a mat-button routerLink="/contact">Contact</a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content fxFlexFill >
+ 
+  
+
+
+
+<mat-grid-list cols="10" rowHeight="16vh"  gutterSize="1em" style="margin-bottom: 5vh;margin: 1em;">
+  <mat-grid-tile    [colspan]="3" [rowspan]="2" style="width: 100%;height:100%;" >
+    <img width="100%" height="100%" src="../../../assets/mujib100.png" />
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="3" [rowspan]="2"  >
+    <img width="100%" height="100%" src="../../../assets/bangobandghu1.jpeg"/>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1" >
+    <img width="100%" height="100%" src="../../../assets/bangabadhu2.jpeg"/>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1" >
+    <img width="100%" height="100%" src="../../../assets/bangobandghu1.jpeg"/>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="1" >
+    <img width="100%" height="100%" src="../../../assets/bangobandghu1.jpeg"/>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="1" >
+    <img width="100%" height="100%" src="../../../assets/bangobandghu1.jpeg"/>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="2" [rowspan]="1" >
+    <img width="100%" height="100%" src="../../../assets/bangabadhu2.jpeg"/>
+  </mat-grid-tile>
+
+</mat-grid-list>
+
+<mat-grid-list cols="2"  rowHeight="100vh"  style="background-color: #ffffff;margin-top: 1vh;"  >
+  <mat-grid-tile  style="max-width: 100% !important;width: 100% !important;margin: 0 ; 
+      padding: 0 !important;max-height: 90vh !important; height: 90vh !important;">
+
+    <div class="card " style="padding: 0 !important;margin: 0 !important;background-color: white;" >
+      <h4 style="color:whitesmoke;padding-top:1em;padding-bottom: 0.25em !important;text-align: center;
+      margin-bottom: 0 !important; font-family: merriweather; background-color: #006994 " >Recently Uploaded Article</h4>
+      
+   
+        <div class="card-body" style="max-height: 86vh !important; overflow-y: scroll;
+          padding-top: 0 !important;margin-top: 0 !important;">
+          
+          <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between" 
+            *ngFor="let c of recentlyUploaded">
+            <div class="pr-3" style="cursor: pointer;width: 20rem !important;" (click)="FormSubmit1(c.id)" >
+              <h6 style="font-family: solaiman;color:#006994; font-weight: 500; ">{{c.title}} </h6>
+              <div class="fs-12">
+                <span class="mr-2" style="font-family: merriweather;color: gray" (click)="dateval(c.date)"> {{c.date}} </span>
+              </div>
+            </div>
+            <div (click)="FormSubmit1(c.id)" style="cursor: pointer;width: 12rem !important;height: 7rem !important; justify-content: right;text-align: right;">
+              <img width="190" height="120" 
+                src={{c.image1}}
+                
+                alt="thumb"                   
+              />
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+  </mat-grid-tile>
+  <mat-grid-tile style="margin: 0 !important;  padding: 0 !important;max-height: 90vh !important; height: 90vh !important;">  
+  
+      <div class="card " style="padding: 0 !important;margin: 0 !important" (click)="searchBangabandhu()">
+        <h4 style="color:whitesmoke;padding-top:1em;padding-bottom: 0.25em !important;text-align: center;
+        margin-bottom: 0 !important; font-family: merriweather; background-color: #006994;" >Bangabandhu and Bangladesh Navy</h4>
+      
+         
+         <div class="card-body" style="max-height: 87vh !important; 
+         padding-top: 0 !important;margin-top: 0 !important;">
+            <img class="card-img-top" src="../../../assets/home2.png" width="100%" height= "440vh" alt="Card image cap" >
+            <h5 class="card-text" style="margin-bottom: 0 !important; padding-bottom:0 !important;padding-top: 1vh;color:#006994">Father Of the nation Bangabandhu Sheikh Mujibor Rahman ...</h5>
+            <a  class="btn btn-outline-dark btn-group-lg" style="bottom: 0;margin-top: 1vh;color: #006994;">Search Related Article</a>
+         </div>
+      </div>
+   
+    
+  </mat-grid-tile>
+</mat-grid-list>
+
+<footer style="max-height: 8vh !important;">
+  <div class="footer-top"  style="padding-bottom: 5em;background-color: #006994 ; ">
+    <div class="container">
+      <div class="row" style="text-align: center;justify-content: center;align-items: center;">
+        <div class="col-sm-12" style="text-align: center;justify-content: center;align-items: center;">
+          <h5 class="font-weight-normal mt-0 mb-1" style="font-family: merriweather;text-align: center;padding-bottom: 0 !important; margin-bottom: 0;">
+            © 2021 @ <a href="#" target="_blank" class="text-white"> DNO</a>. All rights reserved.
+          </h5>
+
+        </div>
+        <div class="col-sm-12" style="text-align: center;justify-content: center;align-items: center;padding-top:1vh">
+          <h5 class="font-weight-normal  mb-1" style="font-family: merriweather;text-align: center;color: silver">
+            Bangladesh Navy Roll of Events
+          </h5>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</footer>
+</mat-sidenav-content>
+</mat-sidenav-container>
+<!--
+<div class="d-flex bd-highlight">
+  <div class="col">
+    <mat-tab-group>
+      <mat-tab label="Latest Published Article"> 
+        <div class="card bg-dark text-white" >
+          <h6 style="color: yellow;padding-left: 2em;padding-top:1em;padding-bottom: 0 !important;margin-bottom: 0 !important;"><u>On This Date</u></h6>
+          
+            <div class="card-body" style="max-height: 480px !important; overflow-y: scroll;">
+              
+              <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between" 
+                *ngFor="let c of recentlyUploaded">
+                <div class="pr-3" style="width: 20rem !important;" (click)="FormSubmit(c.id)" >
+                  <h6 style="font-family: solaiman;">{{c.title}} </h6>
+                  <div class="fs-12">
+                    <span class="mr-2"> Views </span>{{c.view}}
+                  </div>
+                </div>
+                <div  style="width: 12rem !important;height: 6rem !important; justify-content: right;text-align: right;">
+                  <img width="160" height="90" 
+                    src={{c.image1}}
+                    
+                    alt="thumb"                   
+                  />
+                </div>
+              </div>
+            </div>
+    
+    
+          </div>  
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="col">    
+    <img style="max-height: 100% !important; max-width:  100%;height: 100% !important" 
+    src="../../../assets/home2.png">
+  </div>
+</div>
+
+
+
+<div class="page-container" style="width: 100%;height: 85% !important; max-height: 85% !important;">
+
+    <div  class="d-inline-flex p-2 " style="padding: 0 !important; margin: 0 !important">
+      <div class="p-1">
+        <img style="max-height: 100% !important; max-width:  100%;height: 100% !important" src="../../../assets/home1.jpg">
+      </div>
+      <div class="p-1">
+        <img style="max-width:  100%;height: 50% !important" src="../../../assets/home2.png">
+        <div class="" style="padding-top: 5%;padding-right: 0.5em;">
+            <div class="d-flex justify-content-between btn-group btn-group-lg" role="group" aria-label="...">
+              <button type="button"  class="btn btn-outline-dark" (click)="serachyear()">Search By Year</button>
+              <button type="button" class="btn btn-outline-dark" (click)="searchBangabandhu()">Bangabandhu & Bangladesh Navy</button>
+            </div>
+        </div>
+            <div class="d-flex  " style="margin-top: 3em !important;margin-bottom: 0 !important;padding-bottom: 0 !important; width: 100% !important;
+            ;padding-right: 0.5em;">
+            
+     
+                <div class="input-group">
+                  <input type="text" [(ngModel)]="textInput" class="form-control" placeholder="Search Here Please">
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary" (click)="FormSubmit()" type="button">
+                      <i style="color: black;" class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+
+       
+
+          </div>
+      </div>
+
+    </div>
+
+
+
+</div>
+
+-->

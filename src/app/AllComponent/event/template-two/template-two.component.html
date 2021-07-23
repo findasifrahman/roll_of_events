@@ -1,0 +1,350 @@
+
+<!---->
+<div class="loading-indicator" *ngIf="!allloaded" >
+  <mat-spinner 
+    diameter="150"></mat-spinner>
+</div>
+
+
+      <!-- partial:partials/_navbar.html -->
+      <!-- partial:partials/_navbar.html -->
+
+      <div class="content-wrapper" style="margin-left: 2em;margin-top: 0.5em !important;padding-top:0 !important;padding-bottom: 0 !important;margin-bottom: 0 !important;overflow-x: hidden;">
+
+          <div class="row mat-elevation-z2" style="overflow-x: hidden;padding-bottom: 0 !important;margin-bottom: 0 !important" data-aos="fade-up" >
+                  <div class="col-xl-8" style="background-color: white; padding-top: 1vh; padding-bottom: 2vh !important">
+                    <div class="row ">
+                      <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 " style="justify-content: left; "> 
+                        <a  class="nav-link mat-elevation-z16" style="cursor: pointer;font-size: x-large;text-align: left;background-color: #357EC7;color: white;font-family: solaiman;" class="nav-link" (click)="dateval(searchres.date)">{{searchres.datetext}}</a>
+                      </div>
+                      <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5" style="justify-content: right;" > 
+                        <a  class="nav-link mat-elevation-z16" style="font-size: x-large;text-align: right;background-color: #357EC7  ;color: white; font-family: solaiman " class="nav-link">{{searchres.place}}</a>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1" style="justify-content: left;align-items: left; ">                     
+                        <a class="prev2" style="color: #006994;font-size: xx-large; text-align: left;" (click)="prevArticle()">&#10094;</a>
+                      </div>
+                      <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10" style="justify-content: center;"> 
+                        <a  class="nav-link" style="font-size: xx-large;text-align: center;font-family: solaiman;color: #1974D2 ;">{{searchres.title}}</a>
+                      </div>
+                      <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1" style="justify-content: right;">
+                        <a class="next2" style="color: yellowgreen;font-size: xx-large;" (click)="nextArticle()">&#10095;</a>
+                      </div>                     
+                     
+                      
+                    </div>
+                    <!--
+                    <div class="row">                     
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8" >                       
+                            <img width="551" (click)="showLightbox(0)" height="310" src={{searchres.image1}}>
+                        </div>                     
+                          <div class="col-xl-4 col-lg-8 col-md-4 col-sm-4" style="color:whitesmoke;">                       
+                            <img width="265" (click)="showLightbox(1)" height="145" src={{searchres.image2}}>
+                            <br/><br/>
+                            <div class="position:relative; text-align:center;color:white;max-width: 90% !important" (click)="showLightbox(0)">
+                              <img width="265"  height="145" src={{searchres.image1}}>
+                              <div class="bottom-left" style="position: absolute;bottom: 0; background: rgb(0, 0, 0); 
+                                background: rgba(0, 0, 0, 0.5); color: #f1f1f1; width: 90%;max-width: 90% !important; padding: 2.8em; ">
+                                <h1 style="text-align: center;">{{additional_image_num}}</h1></div>
+                            </div>
+
+                          </div>
+                         
+                    </div>
+                  -->
+                  <mat-grid-list cols="4" fxHide.xs="true" fxHide.sm="true" fxHide.md="true" fxShow.lt="true" fxShow.md="true" rowHeight={{rowHeight}}  gutterSize={{gutter_size_main}}>
+                    <mat-grid-tile
+                        *ngFor="let tile of tiles"
+                        [colspan]="tile.cols"
+                        [rowspan]="tile.rows"
+                        [style.background]="white">
+                       <img  (load)="imageloaded()" *ngIf="tile.image && tile.image1verticle" (click)="openModal(tile.imageindex)"  style="height: 100%;" height="100%" src={{tile.image}}>                      
+                       <img  (load)="imageloaded()" *ngIf="tile.image &&  !tile.image1verticle" (click)="openModal(tile.imageindex)" width="100%" style="height: 100%;" height="100%" src={{tile.image}}>                      
+                       <div *ngIf="tile.image &&  tile.additional_image" class="imgcontent">
+                        <h1>{{additional_image_num}}</h1>
+                      </div>
+                       
+                       <video *ngIf="tile.video" width="100%" height="100%" controls nodownload>
+                        <source src={{tile.video}} type="video/mp4">
+                        Your browser does not support the video tag.
+                       </video> 
+
+
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                  <mat-grid-list cols="4" fxShow.sm="true" fxShow.md="false"   fxHide.gt-md="true"   gutterSize={{gutter_size_main}}>
+                    <mat-grid-tile
+                        *ngFor="let tile of tiles"
+                        [colspan]="tile.cols"
+                        [rowspan]="tile.rows"
+                        [style.background]="white">
+                       <img (load)="imageloaded()" *ngIf="tile.image && tile.image1verticle" (click)="openModal(tile.imageindex)"  style="height: 100%;" height="100%" src={{tile.image}}>                      
+                       <img (load)="imageloaded()" *ngIf="tile.image &&  !tile.image1verticle" (click)="openModal(tile.imageindex)" width="100%" style="height: 100%;" height="100%" src={{tile.image}}>                      
+                       <div *ngIf="tile.image &&  tile.additional_image" class="imgcontent">
+                        <h1>{{additional_image_num}}</h1>
+                      </div>
+                       
+                       <video *ngIf="tile.video" width="100%" height="100%" controls nodownload>
+                        <source src={{tile.video}} type="video/mp4">
+                        Your browser does not support the video tag.
+                       </video> 
+
+
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                  <br/>
+
+                  
+                  <div class="row mat-elevation-z2" style="padding-bottom: 2vh !important;margin-left: 0rem;padding-right: 0rem;margin-right: 0.1rem;background-color: white;">
+                      <div class="col-xl-12" >
+                          <p style="text-align: justify;line-height: 1.4;
+                          font-size: 22px;font-family: solaiman;" >
+                              {{searchres.text}}
+                          </p>
+                      </div>
+                  </div>    
+                         
+            </div>
+
+            <div class="col-xl-4 stretch-card grid-margin mat-elevation-z4" style="margin-bottom: 0;padding-top: 1vh;">
+             <div class="card " style="background-color: white;color: #03396c  ;" >
+              <h6 style="color: white;background-color: #38ACEC ; padding-left: 2em;padding-bottom: 1em !important;padding-top: 1em;
+                margin-bottom: 0 !important;font-family: merriweather">On This Date</h6>
+              
+                <div class="card-body" style="max-height: 56vh !important; overflow-y: scroll; padding-top: 0 !important;">
+                  
+                  <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between" 
+                    *ngFor="let c of relatedDate">
+                    <div class="pr-3" style="cursor: pointer;width: 20rem !important;" (click)="FormSubmit(c.id)" >
+                      <h6 style="font-family: solaiman; font-size: 18px;">{{c.title}} </h6>
+                      <div class="fs-12">
+                        <span class="mr-2" style="font-family: merriweather;color: gray;" (click)="dateval(c.tdate)"> {{c.place}} </span>
+                      </div>
+                      <div class="fs-12">
+                        <span class="mr-2" style="font-family: merriweather;color:gray" (click)="dateval(c.tdate)"> {{c.tdate}} </span>
+                      </div>
+                    </div>
+                    <div (click)="FormSubmit(c.id)"  style="cursor: pointer;width: 12rem !important;height: 6rem !important; justify-content: right;text-align: right;">
+                      <img *ngIf="!c.isverticle" class="imgbordersm" width="160" height="90" 
+                        src={{c.image1}}                    
+                        alt="thumb"                   
+                      />
+                      <img *ngIf="c.isverticle"  height="100" 
+                        src={{c.image1}}                    
+                        alt="thumb"                   
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <h6 style="color: white;background-color: #357EC7 ; padding-left: 2em;padding-bottom: 1em !important;
+                padding-top: 1em;margin-bottom: 0 !important;font-family: merriweather">Other Events of {{other_event_year}}</h6>
+                <div class="card-body" style="max-height: 56vh !important; overflow-y: scroll; padding-top: 0 !important;">
+                  
+                  <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between" 
+                    *ngFor="let c of relatedYear">
+                    <div class="pr-3 " style="cursor: pointer;width: 20rem !important;" (click)="FormSubmit(c.id)" >
+                      <h6 style="font-family: solaiman;font-size: 18px;">{{c.title}} </h6>
+                      <div class="fs-12">
+                        <span class="mr-2" style="font-family: merriweather;color: gray;" (click)="dateval(c.tdate)"> {{c.place}} </span>
+                      </div>
+                      <div class="fs-12">
+                        <span class="mr-2" style="font-family: merriweather;color: gray;" (click)="dateval(c.tdate)"> {{c.tdate}} </span>
+                      </div>
+                    </div>
+                    <div (click)="FormSubmit(c.id)"  style="cursor: pointer;;width: 12rem !important;height: 6rem !important; justify-content: right;text-align: right;">
+                      <img *ngIf="!c.isverticle" class="imgbordersm" width="160" height="90" 
+                        src={{c.image1}}                  
+                        alt="thumb"                   
+                      />
+                      <img *ngIf="c.isverticle"  height="100" 
+                        src={{c.image1}}                  
+                        alt="thumb"                   
+                      />
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!----->
+
+          <!---->
+          <div class="row" style="padding-top: 2em;background-color: white;">
+            <div class="col-md-2 col-lg-2"><h5 style="padding-top: 2em;color: #006994">You may Also like</h5></div>
+            
+            <div class="col-md-2 col-lg-2" style="cursor: pointer;"  *ngIf="relatedNews[0]" (click)="FormSubmit(relatedNews[0].id)">
+              <div class="weekly2-img" style="width: 12rem;height: 7rem;margin-bottom: 0.4em;justify-content: center;" (click)="showLightbox(0)">
+                <img *ngIf="!relatedNews[0].isverticle" class="imgbordersm" src={{relatedNews[0].image1}} width="100%" height="100%" alt="">
+                <div *ngIf="relatedNews[0].isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                  <img  src={{relatedNews[0].image1}} class="imgbordersm"  height="100%" alt="">
+                </div>
+              </div>
+              <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 12rem !important;">
+                  <h6 style="width: 10em !important;font-family: solaiman;text-align: justify;color: #003066;font-size: 18px;">{{relatedNews[0].smtitle}}</h6>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-lg-2">
+              <div class="col-md-2 col-lg-2" style="cursor: pointer;"  *ngIf="relatedNews[1]"  (click)="FormSubmit(relatedNews[1].id)">
+                <div class="weekly2-img" style="width: 12rem;height: 7rem;margin-bottom: 0.4em; justify-content: center;" (click)="showLightbox(0)">
+                  <img *ngIf="!relatedNews[1].isverticle" class="imgbordersm" src={{relatedNews[1].image1}} width="100%" height="100%" alt="">
+                  <div *ngIf="relatedNews[1].isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                    <img  src={{relatedNews[1].image1}} class="imgbordersm"  height="100%" alt="">
+                  </div>
+                </div>
+                <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 12rem !important;">
+                  <h6 style="width: 10em !important;font-family: solaiman;text-align: justify;color: #003066;font-size: 18px;">{{relatedNews[1].smtitle}}</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-lg-2">
+              <div class="col-md-2 col-lg-2" style="cursor: pointer;"  *ngIf="relatedNews[2]"
+              (click)="FormSubmit(relatedNews[2].id)">
+                <div class="weekly2-img" style="width: 12rem;height: 7rem;margin-bottom: 0.4em;justify-content: center;" (click)="showLightbox(0)">
+                  <img *ngIf="!relatedNews[2].isverticle" class="imgbordersm" src={{relatedNews[2].image1}} width="100%" height="100%" alt="">
+                  <div *ngIf="relatedNews[2].isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                    <img  src={{relatedNews[2].image1}} class="imgbordersm"  height="100%" alt="">
+                  </div>
+                </div>
+                <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 10rem !important;">
+                  <h6 style="width: 10em !important;font-family: solaiman;text-align: justify;color: #003066;font-size: 18px;">{{relatedNews[2].smtitle}}</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-lg-2">
+              <div class="col-md-2 col-lg-2" style="cursor: pointer;"  *ngIf="relatedNews[3]"  (click)="FormSubmit(relatedNews[3].id)">
+                <div class="weekly2-img" style="width: 12rem;height: 7rem;margin-bottom: 0.4em;" (click)="showLightbox(0)">
+                  <img *ngIf="!relatedNews[3].isverticle" class="imgbordersm" src={{relatedNews[3].image1}} width="100%" height="100%" alt="">
+                  <div *ngIf="relatedNews[3].isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                    <img  src={{relatedNews[3].image1}} class="imgbordersm" height="100%" alt="">
+                  </div>
+                </div>
+                <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 10rem !important;">
+                  <h5 style="width: 10em !important;font-family: solaiman;text-align: justify;color: #003066;font-size: 18px;">{{relatedNews[3].smtitle}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 col-lg-2">
+              <div class="col-md-2 col-lg-2" style="cursor: pointer;" *ngIf="relatedNews[4]"  (click)="FormSubmit(relatedNews[4].id)">
+                <div class="weekly2-img" style="width: 12rem;height: 7rem;margin-bottom: 0.4em;" (click)="showLightbox(0)">
+                  <img *ngIf="!relatedNews[4].isverticle" class="imgbordersm" src={{relatedNews[4].image1}} width="100%" height="100%" alt="">
+
+                  <div *ngIf="relatedNews[4].isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                    <img  src={{relatedNews[4].image1}} class="imgbordersm"  height="100%" alt="">
+                  </div>
+                </div>
+                <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 10rem !important;">
+                  <h5 style="width: 10em !important;font-family: solaiman;text-align: justify;color: #003066;font-size: 18px;">{{relatedNews[4].smtitle}}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+      </div>
+      <!-- main-panel ends -->
+      <!-- container-scroller ends -->
+      <!-- partial -->
+
+<div id="modal_1" class="modal">
+  <div style="z-index: 100;right: 0;top:0; position:absolute; background-color: #171717;" name="fontStyle" aria-label="Font Style">
+    <button (click)="playslide()" mat-icon-button color="warn" style="border-width: thick;border-color: whitesmoke;" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: darkgray;border-width: 3px;border-color: whitesmoke;">{{play_pause_icon}}</mat-icon>
+    </button>
+    <button (click)="zoomIn()" mat-icon-button color="warn" style="border-width: thick;border-color: whitesmoke;" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: darkgray;border-width: 3px;border-color: whitesmoke;">zoom_in</mat-icon>
+    </button>
+    <button (click)="zoomOut()" mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: darkgray;">zoom_out</mat-icon>
+    </button>
+      <a href={{imageUrl}} id="ll" target="_self" mat-icon-button color="warn" 
+      aria-label="Example icon button with a heart icon" download>
+        <mat-icon style="color: darkgray;">save</mat-icon>
+      </a>
+      <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+        <mat-icon (click)="modalclose()" style="color: darkgray; width: 1.5em;font-size: xx-large; font-weight: bolder;">close</mat-icon>
+      </button>
+    </div>
+    <div style="z-index: 100;left: 1em;top:0; position:absolute; background-color: transparent;" name="fontStyle" aria-label="Font Style">
+      <h5 style="color:rgba(255,255,255,0.8);">{{current_imageindex}}</h5>
+    </div>
+ 
+    <div  fxLayout="row" fxLayoutGap="5px" style="z-index: 2;width: 100%;margin-top: 2%;height: 82vh;">
+      <div fxFlex="100" style="width: 100%;position: relative;;justify-content: center;text-align: center;">
+         <img [@myAwesomeAnimations]="curreent_animation" *ngIf="!isverticalmodal" fxShow.sm="false" fxHide.xs="true" style="justify-content: center;text-align: center;" width="68%" height="100%"  id="img01" [src]="imageUrl">
+         <img [@myAwesomeAnimations]="curreent_animation" *ngIf="!isverticalmodal" fxShow.sm="true"  style="justify-content: center;text-align: center;margin-top:25vh" width="68%"  id="img01" [src]="imageUrl">
+       
+         <img [@myAwesomeAnimations]="curreent_animation" *ngIf="isverticalmodal"  style="justify-content: center;text-align: center;"  height="100%"   id="img01" [src]="imageUrl">
+          
+          <div *ngIf="showCaption"  class="imgoverlay2"  >
+            <h4 style="font-family: solaiman;padding-top:0.2em">{{current_caption}}</h4>
+          </div>
+          <!--
+          <div id="caption" class="imgoverlay2"></div>
+          -->
+      </div>
+    </div>
+
+
+    <a class="prev" (click)="minusSlides()">&#10094;</a>
+    <a class="next" (click)="plusSlides()">&#10095;</a>
+
+      <div *ngIf="thumbnill_grid" style="z-index: 100;margin-bottom: 0px;right: 0px;bottom:0; position:absolute; background-color: #171717;width: 100%; justify-content: center;text-align: center;" name="fontStyle" aria-label="Font Style">
+      
+        <div fxFlex="11" *ngFor="let c of imageObject">
+          <img (click)="modal_thumbnill_click(c.index)" *ngIf="c.image && !c.image1verticle"  class="imgbordersm"  height="78px" width="85%" [src]="c.image">                      
+          <img (click)="modal_thumbnill_click(c.index)" *ngIf="c.image &&  c.image1verticle" class="imgbordersm"  height="78px"    [src]="c.image">                      
+          <!--
+              <img (click)="modal_thumbnill_click(c.index)"  class="imgbordersm" [src]="c.image" style=""  height="78px" width="95%"  alt="Nature and sunrise">
+          -->
+        </div>
+      </div>
+
+      <div *ngIf="caption_button" style="z-index: 100;right: 0;bottom:75px; position:absolute; background-color: transparent;" name="fontStyle" aria-label="Font Style">
+        <button (click)="captionHide()" mat-button style="background-color: #171717;padding-right: 5px;padding-bottom: 2px;color: darkgray; border-radius: 0;" >
+          {{ Hide_Caption_Text}}
+        </button>
+        <button (click)="gridhide()" mat-button style="background-color: #171717;;margin-left: 5px;padding-right: 5px;padding-bottom: 2px;color: darkgray;border-radius: 0;" >
+           {{Hide_Grid_Text}}
+        </button>
+      </div>
+
+</div>
+
+
+
+<!--
+    <div id="modal_1" class="modal">
+      <div style="z-index: 100;right: 0;top:0; position:absolute; background-color: black;" name="fontStyle" aria-label="Font Style">
+    
+        <button (click)="zoomIn()" mat-icon-button color="warn" style="border-width: thick;border-color: whitesmoke;" aria-label="Example icon button with a heart icon">
+          <mat-icon style="color: ghostwhite;border-width: 3px;border-color: whitesmoke;">zoom_in</mat-icon>
+        </button>
+        <button (click)="zoomOut()" mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+          <mat-icon style="color: ghostwhite;">zoom_out</mat-icon>
+        </button>
+          <a href={{imageUrl}} id="ll" target="_self" mat-icon-button color="warn" 
+          aria-label="Example icon button with a heart icon" download>
+            <mat-icon style="color: white;">save</mat-icon>
+          </a>
+          <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+            <mat-icon (click)="modalclose()" style="color: gainsboro; width: 1.5em;font-size: xx-large; font-weight: bolder;">close</mat-icon>
+          </button>
+    
+        </div>
+     
+          <img *ngIf="!isverticalmodal" class="modal-content"  id="img01" [src]="imageUrl">
+          <img *ngIf="isverticalmodal" class="modal-content2"  id="img01" [src]="imageUrl">
+          <div id="caption"></div>
+       
+        <a class="prev" (click)="minusSlides()">&#10094;</a>
+        <a class="next" (click)="plusSlides()">&#10095;</a>
+    </div>
+  -->    
+    
+    

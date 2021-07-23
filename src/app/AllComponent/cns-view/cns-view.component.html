@@ -1,0 +1,138 @@
+
+  
+  
+        <!-- partial:partials/_navbar.html -->
+        <!-- partial:partials/_navbar.html -->
+  
+        <div class="content-wrapper" style="margin-left: 2em;margin-top: 0.5em !important; 
+          padding-top:0 !important; background-color: white;">
+  
+            <div class="row mat-elevation-z8" data-aos="fade-up" style="margin-top:3%;margin-left: 8%;margin-right: 8%;">
+                    <div class="col-xl-12" style="background-color: white;">
+                      <div class="row">
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="justify-content: center;"> 
+                          <a  class="nav-link" style="font-size: x-large;text-align: center;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;color: #006994 ;font-weight: 800;">{{cnstitle}}</a>
+                        </div>                    
+                                      
+                      </div>
+                      <hr  style="background-color: rgb(255, 215, 0);font-weight: bolder;"/>
+                    <mat-grid-list cols="4" rowHeight="70vh"  gutterSize="0.75em">
+                      <mat-grid-tile
+                          [colspan]="4"
+                          [rowspan]="1"
+                          >
+                         <img  height="100%"   src={{dataimage}}>                      
+                        
+                      </mat-grid-tile>
+                     
+                    </mat-grid-list>
+                    <mat-grid-list cols="1" rowHeight="2.2em"  >
+                 
+                        <h3 style="color: #006994; font-weight:800;text-align: center;" > {{heading}} </h3>
+                       
+                    </mat-grid-list>
+                    <br/>
+  
+                    
+                    <div class="row" style="margin-left: 0rem;padding-right: 1.1rem;margin-bottom: 50px">
+                        <div class="col-xl-12" >
+                            <p style="text-align: justify;font-family:  merriweather;font-size: 16px;font-weight: 500;" class="mb-0">
+                                {{datatext}}
+                            </p>
+                        </div>
+                    </div>    
+                           
+              </div>
+  
+          
+            </div>
+  
+            <!----->
+  
+            <!--
+            <div class="row" style="margin-top: 3em;background-color: white;">
+              <div class="col-md-2 col-lg-2"><h5 style="padding-top: 2em;color: #006994">You may Also like</h5></div>
+              
+              <div class="col-md-2 col-lg-2" style="cursor: pointer;"  *ngIf="relatedNews[0]" (click)="FormSubmit(relatedNews[0].id)">
+                <div class="weekly2-img" style="width: 12rem;height: 7rem;margin-bottom: 0.4em;justify-content: center;" (click)="showLightbox(0)">
+                  <img *ngIf="!relatedNews[0].isverticle" src={{relatedNews[0].image1}} width="100%" height="100%" alt="">
+                  <div *ngIf="relatedNews[0].isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                    <img  src={{relatedNews[0].image1}} class="imgbordersm"  height="100%" alt="">
+                  </div>
+                </div>
+                <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 12rem !important;">
+                    <h6 style="width: 10em !important;font-family: solaiman;text-align: justify;color: #003066;font-size: 18px;">{{relatedNews[0].smtitle}}</h6>
+                </div>
+              </div>
+  
+              <div class="col-md-2 col-lg-2">
+                <div class="col-md-2 col-lg-2" style="cursor: pointer;"  *ngIf="relatedNews[1]"  (click)="FormSubmit(relatedNews[1].id)">
+                  <div class="weekly2-img" style="width: 12rem;height: 7rem;margin-bottom: 0.4em; justify-content: center;" (click)="showLightbox(0)">
+                    <img *ngIf="!relatedNews[1].isverticle" src={{relatedNews[1].image1}} width="100%" height="100%" alt="">
+                    <div *ngIf="relatedNews[1].isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                      <img  src={{relatedNews[1].image1}} class="imgbordersm"  height="100%" alt="">
+                    </div>
+                  </div>
+                  <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 12rem !important;">
+                    <h6 style="width: 10em !important;font-family: solaiman;text-align: justify;color: #003066;font-size: 18px;">{{relatedNews[1].smtitle}}</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <div class="col-md-2 col-lg-2" style="cursor: pointer;"  *ngIf="relatedNews[2]"
+                (click)="FormSubmit(relatedNews[2].id)">
+                  <div class="weekly2-img" style="width: 12rem;height: 7rem;margin-bottom: 0.4em;justify-content: center;" (click)="showLightbox(0)">
+                    <img *ngIf="!relatedNews[2].isverticle" src={{relatedNews[2].image1}} width="100%" height="100%" alt="">
+                    <div *ngIf="relatedNews[2].isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                      <img  src={{relatedNews[2].image1}} class="imgbordersm"  height="100%" alt="">
+                    </div>
+                  </div>
+                  <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 10rem !important;">
+                    <h6 style="width: 10em !important;font-family: solaiman;text-align: justify;color: #003066;font-size: 18px;">{{relatedNews[2].smtitle}}</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <div class="col-md-2 col-lg-2" style="cursor: pointer;"  *ngIf="relatedNews[3]"  (click)="FormSubmit(relatedNews[3].id)">
+                  <div class="weekly2-img" style="width: 12rem;height: 7rem;margin-bottom: 0.4em;" (click)="showLightbox(0)">
+                    <img *ngIf="!relatedNews[3].isverticle" src={{relatedNews[3].image1}} width="100%" height="100%" alt="">
+                    <div *ngIf="relatedNews[3].isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                      <img  src={{relatedNews[3].image1}} class="imgbordersm" height="100%" alt="">
+                    </div>
+                  </div>
+                  <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 10rem !important;">
+                    <h5 style="width: 10em !important;font-family: solaiman;text-align: justify;color: #003066;font-size: 18px;">{{relatedNews[3].smtitle}}</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <div class="col-md-2 col-lg-2" style="cursor: pointer;" *ngIf="relatedNews[4]"  (click)="FormSubmit(relatedNews[4].id)">
+                  <div class="weekly2-img" style="width: 12rem;height: 7rem;margin-bottom: 0.4em;" (click)="showLightbox(0)">
+                    <img *ngIf="!relatedNews[4].isverticle" class="imgbordersm" src={{relatedNews[4].image1}} width="100%" height="100%" alt="">
+  
+                    <div *ngIf="relatedNews[4].isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                      <img  src={{relatedNews[4].image1}}  height="100%" alt="">
+                    </div>
+                  </div>
+                  <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 10rem !important;">
+                    <h5 style="width: 10em !important;font-family: solaiman;text-align: justify;color: #003066;font-size: 18px;">{{relatedNews[4].smtitle}}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            -->
+        </div>
+        <!-- main-panel ends -->
+        <!-- container-scroller ends -->
+  
+
+        <!-- partial -->
+
+  
+  
+
+      
+      
+      

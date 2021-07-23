@@ -1,0 +1,269 @@
+
+<!---->
+<div class="loading-indicator" >
+  <mat-spinner *ngIf="!allloaded" 
+    diameter="150"></mat-spinner>
+</div>
+
+
+  <h1 style="font-family: merriweather;background-color: whitesmoke; text-align: center; color: #006994;
+    font-weight: bold;padding-bottom:0 !important; margin-bottom: 0 !important;margin-top: 3vh !important;">
+    BANGLADESH NAVY'S ROLL OF EVENTS</h1>
+
+    <div  class="clearfix" style="margin-left: 1.5em;margin-right: .5em;">
+        <nav class="navbar navbar-expand-md navbar-light " style="padding-left: 6px !important;
+        border-color: coral;border-bottom-width: 1rem;padding-top: 0.5rem !important;
+        margin-bottom: 0px !important; padding-bottom: 0 !important;;width: 100%;max-width: 100%;;;">    
+          <div class="collapse navbar-collapse" id="navbarText" style="font-size: medium;">
+            <ul class="navbar-nav mr-auto" >
+              <li class="nav-item " >
+                  <a class="nav-link " routerLinkActive="active" style="cursor: pointer;color: #001731;font-family: merriweather;" (click)="allView()">All Description<span class="sr-only">(current)</span></a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="imageView()" style="cursor: pointer;color: #003066;font-family: merriweather;">Images </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="videoView()" style="cursor: pointer;color: #003066;font-family: merriweather;">Videos</a>
+              </li>
+            </ul>
+            <button mat-button (click)="imageClick()" [ngClass]="[bntStyle1]" style="text-align: right;justify-content: right;align-items: right;">
+              <span style="font-family:merriweather;font-size: 16px;color:#003066;font-weight: 500;text-align: right;">Image Search</span>
+            </button>
+
+            <button mat-button (click)="videoClick()" [ngClass]="[bntStyle2]" style="text-align: right;justify-content: right;align-items: right;">
+              <span style="font-family:merriweather;font-size: 16px;color:#003066;font-weight: 500;text-align: right;">Video Search</span>
+            </button>
+
+          </div>
+        </nav>
+
+      <!---->
+
+      <div class="row" *ngIf="showallevent">
+        <div class="col-md-6" *ngFor="let c of pagedItems">
+          <div class="card  flex-md-row mb-4 shadow-sm h-md-250">
+              <div class="card-body d-flex flex-column align-items-start" >
+                <span class="d-inline-block mb-1 " (click)="onDetail(c.id)" style="color: #006994 ;cursor: pointer;font-family: solaiman;font-size: 20px;">{{c.title}}</span>
+              
+                <div class="small" style="cursor: pointer;;color: gray;margin-top: 0;margin-bottom: 0;" (click)="dateval(c.date)">{{c.place}}</div>
+                <div class="mb-1  small" style="cursor: pointer;margin-top: 0;padding-top: 0;color: gray" (click)="dateval(c.date)">{{c.tdate}}</div>
+
+                <a (click)="onDetail(c.id)" class="btn btn-outline-primary btn-sm" style="bottom: 1vh !important;border-color: #003066;;" role="button" >Continue reading</a>
+              </div>
+              <img *ngIf="!c.isverticle" (click)="onDetail(c.id)"  class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x150]" src={{c.image1}} style="cursor: pointer;width: 260px; height: 160px;">
+              
+              <div *ngIf="c.isverticle" class="card-img-right flex-auto d-none d-lg-block" style="cursor: pointer;width: 100px; height: 150px;">
+                <img  src={{c.image1}}  height="100%" alt="">
+              </div>
+
+          </div>
+        </div>
+
+      </div>
+
+
+    <div class="row" style="margin-top: 0.1em !important;padding-top: 0.5em !important;padding-left: 1em;" *ngIf="showAllImage">
+      <div class="col-lg-3 col-md-3 col-sm-12  card mb-4 shadow-sm" *ngFor="let c of pagedItems" style="text-align: center;justify-content: center;align-items: center;" >         
+            <div  style="width: 16rem;height: 9rem;margin-bottom: 0.4em;cursor: pointer;" 
+            (click)="openModal(c.indexx)">
+                <img *ngIf="!c.isverticle" src={{c.image}} width="100%" height="100%" alt="">
+                <div *ngIf="c.isverticle" style="width: 100%;height: 100%;justify-content: center;align-items: center;text-align: center;" >
+                  <img  src={{c.image}}  height="100%" alt="">
+                </div>
+            </div>
+            <div class="weekly2-caption"  style="cursor: pointer;height: 2.5rem; margin-bottom: 0.6em;width: 16rem !important;">
+                <h6 style="font-family: solaiman;text-align: justify;color: #003066;font-size: 20px;">{{c.smtitle}}</h6>
+            </div>
+          </div>
+    </div>
+
+    <div class="row" style="margin-top: 0.1em !important;padding-top: 0.5em !important;padding-left: 1em;" *ngIf="showAllVideo">
+      <div class="col-lg-3 col-md-3 col-sm-12 card mb-4 shadow-sm" *ngFor="let c of pagedItems" style="text-align: center;justify-content: center;align-items: center;">         
+            <div class="weekly2-img" style="width: 16rem;height: 9rem;margin-bottom: 0.4em;" >
+              <video width="100%" height="100%" controls controlsList="nodownload">
+                <source src={{c.video}} type="video/mp4">
+                Your browser does not support the video tag.
+               </video>
+            </div>
+            <div class="weekly2-caption" style="height: 2.5rem; margin-bottom: 0.6em;width: 16rem !important;">
+                <h6 style="font-family: solaiman;text-align: justify;color: #003066;font-size: large;">{{c.smtitle}}</h6>
+            </div>
+      </div>
+    </div>
+
+
+    <nav aria-label="..." style="max-width: 700px !important;" *ngIf="showallevent">
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+          <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
+              <a  class="page-link" (click)="setPage(1)" style="margin: 0;padding: 10px;">First</a>
+
+          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item">
+              <a (click)="setPage(page)"  class="page-link" style="margin: 0;padding: 10px;" >{{page}}</a>
+          </li>
+
+          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
+              <a (click)="setPage(pager.totalPages)"  class="page-link" style="margin: 0;padding: 10px;">Last</a>
+          </li>
+        </ul>
+    </nav>
+    <nav aria-label="..." style="max-width: 700px !important;" *ngIf="showAllImage">
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
+            <a  class="page-link" (click)="setPage_image(1)" style="margin: 0;padding: 10px;">First</a>
+
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item">
+            <a (click)="setPage_image(page)"  class="page-link" style="margin: 0;padding: 10px;" >{{page}}</a>
+        </li>
+
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
+            <a (click)="setPage_image(pager.totalPages)"  class="page-link" style="margin: 0;padding: 10px;">Last</a>
+        </li>
+      </ul>
+    </nav>
+    <nav aria-label="..." style="max-width: 700px !important;" *ngIf="showAllVideo">
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item">
+            <a  class="page-link" (click)="setPage_video(1)" style="margin: 0;padding: 10px;">First</a>
+
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page-item">
+            <a (click)="setPage_video(page)"  class="page-link" style="margin: 0;padding: 10px;" >{{page}}</a>
+        </li>
+
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item">
+            <a (click)="setPage_video(pager.totalPages)"  class="page-link" style="margin: 0;padding: 10px;">Last</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+
+
+
+
+
+
+
+<!-- Modal -->
+
+
+<!--
+<div id="modal_1" class="modal">
+  <div style="z-index: 100;right: 0;top:0; position:absolute; background-color: black;" name="fontStyle" aria-label="Font Style">
+
+    <button (click)="zoomIn()" mat-icon-button color="warn" style="border-width: thick;border-color: whitesmoke;" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: ghostwhite;border-width: 3px;border-color: whitesmoke;">zoom_in</mat-icon>
+    </button>
+    <button (click)="zoomOut()" mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: ghostwhite;">zoom_out</mat-icon>
+    </button>
+      <a href={{imageUrl}} id="ll" target="_self" mat-icon-button color="warn" 
+      aria-label="Example icon button with a heart icon" download>
+        <mat-icon style="color: white;">save</mat-icon>
+      </a>
+      <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+        <mat-icon (click)="modalclose()" style="color: gainsboro; width: 1.5em;font-size: xx-large; font-weight: bolder;">close</mat-icon>
+      </button>
+
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2" style="display: block;padding: 0 !important; margin: 0 !important;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 78vh;">
+  
+          <img *ngIf="!isverticalmodal" height="100%"  style="position: relative;right: -100;background-color: black;opacity: 0.4;"
+            id="img01" [src]="prevUrl">
+            <img  *ngIf="isverticalmodal"   id="img01" height="100%"   style="position: relative;left: -100;background-color: black;opacity: 0.4;"
+            [src]="prevUrl">
+      </div>
+
+      <div class="col-md-8 col-lg-8 col-sm-8 col-xs-8" style="padding: 0 !important; margin: 0 !important;text-align: center;justify-content: center;align-items: center;">
+          <img *ngIf="!isverticalmodal" height="100%"  class="modal-content"  id="img01" [src]="imageUrl">
+          <img *ngIf="isverticalmodal" height="100%"  class="modal-content2"  id="img01" [src]="imageUrl">
+      </div>
+      <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2" style="display: block;padding: 0 !important; margin: 0 !important;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 78vh;">
+            <img  *ngIf="!isverticalmodal"   id="img01" height="100%"   style="position: relative;left: -100;background-color: black;opacity: 0.4;"
+            [src]="nextUrl">
+            <img  *ngIf="isverticalmodal"   id="img01" height="100%"   style="position: relative;left: -100;background-color: black;opacity: 0.4;"
+            [src]="nextUrl">
+        </div>
+    </div>
+
+      <div id="caption"></div>
+   
+    <a class="prev" (click)="minusSlides()">&#10094;</a>
+    <a class="next" (click)="plusSlides()">&#10095;</a>
+</div>
+
+-->
+
+<div id="modal_1" class="modal" style="overflow-x: hidden;">
+  <div style="z-index: 50;top:1px; width: 100%; position:absolute;text-align: center; justify-content: center;align-items: center;" >
+      <h3 style="text-align: center; justify-content: center;align-items: center;color:white"> {{slideimagetitle}}</h3>
+  </div>
+  <div style="z-index: 100;right: 0;top:0; position:absolute; background-color: #171717;" name="fontStyle" aria-label="Font Style">
+    <button (click)="playslide()" mat-icon-button color="warn" style="border-width: thick;border-color: whitesmoke;" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: darkgray;border-width: 3px;border-color: whitesmoke;">{{play_pause_icon}}</mat-icon>
+    </button>
+    <button (click)="zoomIn()" mat-icon-button color="warn" style="border-width: thick;border-color: whitesmoke;" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: darkgray;border-width: 3px;border-color: whitesmoke;">zoom_in</mat-icon>
+    </button>
+    <button (click)="zoomOut()" mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: darkgray;">zoom_out</mat-icon>
+    </button>
+      <a href={{imageUrl}} id="ll" target="_self" mat-icon-button color="warn" 
+      aria-label="Example icon button with a heart icon" download>
+        <mat-icon style="color: darkgray;">save</mat-icon>
+      </a>
+      <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+        <mat-icon (click)="modalclose()" style="color: darkgray; width: 1.5em;font-size: xx-large; font-weight: bolder;">close</mat-icon>
+      </button>
+    </div>
+   
+      <mat-grid-list *ngIf="!isverticalmodal" cols="6"  data-aos="fade-up" rowHeight="39vh"  gutterSize="1em" 
+        style="margin-bottom: 1vh;">
+        <mat-grid-tile  [colspan]="1" [rowspan]="2">
+          <div  style="padding: 0;margin: 0; height:100%; width: 100%;">
+            <img class="img2"  height="100%"  style="position: relative;right: -100;background-color: black;opacity: 0.3;"
+            id="img00" [src]="prevUrl">
+            <h6 style="color: #f2f2f2;font-size: 20px;padding: 0 5px;position: absolute;top: 1%;">{{imagenumbertext}}</h6>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile   [colspan]="4" [rowspan]="2">
+    
+            <img *ngIf="!isverticalmodal" height="100%"  class="modal-content"  id="img01" [src]="imageUrl">
+       
+        </mat-grid-tile>
+        <mat-grid-tile   [colspan]="1" [rowspan]="2">
+          <img class="img2" *ngIf="!isverticalmodal"   id="img02" height="100%"   style="position: relative;left: -100;background-color: black;opacity: 0.3;"
+          [src]="nextUrl">
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list *ngIf="isverticalmodal" cols="11" rowHeight="39vh"  gutterSize="1em" style="margin-bottom: 1vh;">
+        <mat-grid-tile  [colspan]="4" [rowspan]="2">
+          <div  style="padding: 0;margin: 0; height:100%; width: 100%;">
+            <img  *ngIf="isverticalmodal"   id="img00" height="100%"   style="position: relative;left: -40;background-color: black;opacity: 0.3;"
+            [src]="prevUrl">
+            <h6 style="color: #f2f2f2;font-size: 20px;padding: 0 5px;position: absolute;top: 1%;">{{imagenumbertext}}</h6>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile   [colspan]="3" [rowspan]="2">
+           <img *ngIf="isverticalmodal" height="100%" width="100%"   class="modal-content2"  id="img01" [src]="imageUrl">
+        </mat-grid-tile>
+        <mat-grid-tile   [colspan]="4" [rowspan]="2">
+          <img  *ngIf="isverticalmodal"   id="img02" height="100%"   style="position: relative;left: -40;background-color: black;opacity: 0.3;"
+          [src]="nextUrl">
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <div id="caption"></div>
+   
+    <a class="prev" (click)="minusSlides()" accesskey="Left Arrow">&#10094;</a>
+    <a class="next" (click)="plusSlides()"  accesskey="Right Arrow">&#10095;</a>
+</div>

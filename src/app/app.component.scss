@@ -1,0 +1,37 @@
+
+.btn-default {
+    color: black;
+    background-color: transparent;
+  
+  }
+  .btn-change {
+    color: white;
+    background-color: #006994 ;
+  }
+  
+  .btn-default2 {
+    color: white;
+    //background-color: transparent;
+  
+  }
+  .btn-change2 {
+    color: lawngreen;
+    //background-color: gray;
+  }
+  
+  .mat-menu-item:hover{
+    background-color:grey;
+    color: purple;
+  }
+  
+    .example-spacer {
+      flex: 1 1 auto;
+    }
+
+mat-sidenav-container {
+  height: calc(100vh - 75px);
+}
+.mat-menu-item:hover{
+  background-color:white;
+  color: purple;
+}

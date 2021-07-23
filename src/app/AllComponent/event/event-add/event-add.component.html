@@ -1,0 +1,481 @@
+
+<div class="card" style="margin-top: 20px;margin-left: 45px;background-color: #006994;">
+    <div class="card-body" style="text-align: center;color:blanchedalmond;font-size: large;">
+      Add Event
+    </div>
+  </div>
+    <form class="example-container" [formGroup]="Forms" style="margin-top: 20px;margin-left: 45px;">
+      <div class="col-md-12" >
+        <mat-tab-group mat-stretch-tabs class="example-stretched-tabs" #matgroup>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Event Add
+            </ng-template>
+            <mat-form-field floatLabel="options.value.floatLabel">
+              <mat-label>Event Name</mat-label>
+              <input matInput placeholder="eventname" type="Text" formControlName="eventname" required>
+            </mat-form-field>
+            <mat-form-field floatLabel="options.value.floatLabel">
+              <mat-label> Title</mat-label>
+              <input matInput placeholder="title" type="Text" formControlName="title" required>
+            </mat-form-field>
+            <mat-form-field floatLabel="options.value.floatLabel">
+                <mat-label>Place</mat-label>
+                <input matInput placeholder="Place" type="Text" formControlName="place" required>
+            </mat-form-field>
+            <mat-form-field floatLabel="options.value.floatLabel">
+                <mat-label>Date</mat-label>
+                <input matInput onkeydown="return false" placeholder="date"  type="date" formControlName="date"  required>
+             
+            </mat-form-field>
+            <mat-form-field floatLabel="options.value.floatLabel">
+              <mat-label>Date_Text(২৭ জুলাই ২০২০, সোমবার)</mat-label>
+              <input matInput placeholder="date" type="Text" formControlName="datetext" required>
+            </mat-form-field>
+            <mat-form-field floatLabel="options.value.floatLabel">
+                <mat-label> Priority</mat-label>
+                <input matInput placeholder="priority" type="number" formControlName="priority" >
+            </mat-form-field>
+            <mat-form-field floatLabel="options.value.floatLabel">
+                <mat-label>Keyword1,Keyword2,Keyword3,Keyword4 (Do not put space between word)</mat-label>
+                <input matInput placeholder="Keyword1,Keyword2,Keyword3,Keyword4 (Do not put space between word)" type="Text" formControlName="keyword" >
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Category (Menu item)</mat-label>
+              <select matNativeControl formControlName="category" name="category" >   
+                <option *ngFor="let car of categoryName_arr" [value]="car">
+                  {{car}}
+                </option>
+              </select>
+              <mat-error *ngIf="selectFormControl.hasError('required')">
+                This field is required
+              </mat-error>
+              <mat-hint>Category</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="options.value.floatLabel" style="height: fit-content;">
+                <mat-label>text</mat-label>
+                <textarea matInput placeholder="text" type="Text" formControlName="text" required cdkTextareaAutosize
+                cdkAutosizeMinRows="6"></textarea>
+            </mat-form-field>
+
+         
+            <button mat-raised-button style="width:100%" color="warn" (click)='matgroup.selectedIndex = 1'>Go Next</button>
+          </mat-tab>
+  
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Add Image
+            </ng-template>
+  
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" style="margin-top: 5px;">
+
+              <div class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="29" style="margin-top: 20px;" >
+                <app-file-upload [filenameinput]="filenameinput1" [addorEdit]="add" [preVal]="_file1id" (picidVal)="file1id($event)"></app-file-upload>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="49" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image1 Caption</mat-label>
+                  <input matInput placeholder="Image1 Caption" type="Text" formControlName="image1caption" >
+                </mat-form-field>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" style="margin-top: 20px;">
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image1prio"  formControlName="image1prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div>  
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" style="margin-top: 5px;">
+              <div class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="9" style="margin-top: 20px;">
+                <app-file-upload [filenameinput]="filenameinput2" [addorEdit]="add" [preVal]="_file2id" (picidVal)="file2id($event)"></app-file-upload>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="49" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image2 Caption</mat-label>
+                  <input matInput placeholder="Image2 Caption" type="Text" formControlName="image2caption" >
+                </mat-form-field>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" style="margin-top: 20px;">
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image2prio"  formControlName="image2prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div>  
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" >
+              <div class="d-flex flex-column bd-highlight mb-5" style="margin-top: 20px;" fxFlex="29" fxFlex.lt-lg="9" style="margin-top: 15px;">
+                <app-file-upload [filenameinput]="filenameinput3" [addorEdit]="add" [preVal]="_file3id" (picidVal)="file3id($event)"></app-file-upload>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="19" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image3 Caption</mat-label>
+                  <input matInput placeholder="Image3 Caption" type="Text" formControlName="image3caption" >
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" style="margin-top: 15px;">
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image3prio"  formControlName="image3prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div>  
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" style="margin-top: 5px;">
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="9" >
+                <app-file-upload [filenameinput]="filenameinput4" [addorEdit]="add" [preVal]="_file4id" (picidVal)="file4id($event)"></app-file-upload>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image4 Caption</mat-label>
+                  <input matInput placeholder="Image4 Caption" type="Text" formControlName="image4caption" >
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" >
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image4prio"  formControlName="image4prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div>  
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" style="margin-top: 5px;">
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="9" >
+                <app-file-upload [filenameinput]="filenameinput5" [addorEdit]="add" [preVal]="_file5id" (picidVal)="file5id($event)"></app-file-upload>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image5 Caption</mat-label>
+                  <input matInput placeholder="Image5 Caption" type="Text" formControlName="image5caption" >
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" >
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image5prio"  formControlName="image5prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div>  
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" style="margin-top: 5px;">
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="9" >
+                <app-file-upload [filenameinput]="filenameinput6" [addorEdit]="add" [preVal]="_file6id" (picidVal)="file6id($event)"></app-file-upload>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image6 Caption</mat-label>
+                  <input matInput placeholder="Image6 Caption" type="Text" formControlName="image6caption" >
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" >
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image6prio"  formControlName="image6prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div>  
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" style="margin-top: 5px;">
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="9" >
+                <app-file-upload [filenameinput]="filenameinput7" [addorEdit]="add" [preVal]="_file7id" (picidVal)="file7id($event)"></app-file-upload>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image7 Caption</mat-label>
+                  <input matInput placeholder="Image7 Caption" type="Text" formControlName="image7caption" >
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" >
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image7prio"  formControlName="image7prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div> 
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" style="margin-top: 5px;">
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="9" >
+                <app-file-upload [filenameinput]="filenameinput8" [addorEdit]="add" [preVal]="_file8id" (picidVal)="file8id($event)"></app-file-upload>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image8 Caption</mat-label>
+                  <input matInput placeholder="Image8 Caption" type="Text" formControlName="image8caption" >
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" >
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image8prio"  formControlName="image8prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div> 
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" style="margin-top: 5px;">
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="9" >
+                <app-file-upload [filenameinput]="filenameinput9" [addorEdit]="add" [preVal]="_file9id" (picidVal)="file9id($event)"></app-file-upload>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image9 Caption</mat-label>
+                  <input matInput placeholder="Image9 Caption" type="Text" formControlName="image9caption" >
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" >
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image9prio"  formControlName="image9prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div> 
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" style="margin-top: 5px;">
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="9" >
+                <app-file-upload [filenameinput]="filenameinput10" [addorEdit]="add" [preVal]="_file10id" (picidVal)="file10id($event)"></app-file-upload>
+              </div>
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image10 Caption</mat-label>
+                  <input matInput placeholder="Image10 Caption" type="Text" formControlName="image10caption" >
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" >
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image10prio"  formControlName="image10prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div> 
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" style="margin-top: 5px;">
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="9" >
+                <app-file-upload [filenameinput]="filenameinput11" [addorEdit]="add" [preVal]="_file11id" (picidVal)="file11id($event)"></app-file-upload>
+             </div>
+             <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+              <mat-form-field floatLabel="options.value.floatLabel">
+                <mat-label>Image11 Caption</mat-label>
+                <input matInput placeholder="Image11 Caption" type="Text" formControlName="image11caption" >
+              </mat-form-field>
+            </div>
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" >
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image11prio"  formControlName="image11prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div> 
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" >
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="29" fxFlex.lt-lg="9" style="margin-top: 5px;">
+                <app-file-upload [filenameinput]="filenameinput12" [addorEdit]="add" [preVal]="_file12id" (picidVal)="file12id($event)"></app-file-upload>         
+             </div>
+             <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+                <mat-form-field floatLabel="options.value.floatLabel">
+                  <mat-label>Image12 Caption</mat-label>
+                  <input matInput placeholder="Image12 Caption" type="Text" formControlName="image12caption" >
+                </mat-form-field>
+              </div>
+              <div style="margin-top: 20px;" class="d-flex flex-column bd-highlight mb-5" fxFlex="19" fxFlex.lt-lg="19" style="margin-top: 5px;">
+                <section class="example-section">
+                  <mat-checkbox  class="example-margin" name="image12prio"  formControlName="image12prio" >Show at front</mat-checkbox>
+                </section>
+              </div>
+
+            </div> 
+            <button mat-raised-button style="width:100%" color="warn" (click)='matgroup.selectedIndex = 2'>Go Next</button>      
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Add  Video
+            </ng-template>
+            <app-file-upload [filenameinput]="filenameinput13" [preVal]="_file13id" (picidVal)="file13id($event)"></app-file-upload>
+            <br/>
+            <div fxLayout="row wrap" fxLayout.xs="column"  fxLayoutAlign="space-between stretch" >
+              
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+                <div class="input-group btn-group">
+                  <button  (click)="previewSubmit()" class="form-control btn" style="height:40px;width:425px;background-color:black;color:whitesmoke" >Preview</button>
+                </div>
+              </div>
+          
+              <div class="d-flex flex-column bd-highlight mb-1" fxFlex="49" fxFlex.lt-lg="9" >
+                <div class="input-group btn-group">
+                  <button type="submit" (click)="FormSubmit()" class="form-control btn" style="height:40px;width:425px;background-color:black;color:whitesmoke" [disabled]="!Forms.valid">Submit</button>
+                </div>
+              </div>
+            </div>
+
+
+          </mat-tab>
+  
+        </mat-tab-group>
+      </div>
+    </form>
+  
+    <br /><br />
+  
+  
+
+    
+<!----------------------->
+<div id="modal_1" class="modal">
+
+    <div style="z-index: 103;right: 0;top:0; position:absolute; background-color: #171717;" name="fontStyle" aria-label="Font Style">
+        <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+          <mat-icon (click)="modalclose()" style="color: darkgray; width: 1.5em;font-size: xx-large; font-weight: bolder;">close</mat-icon>
+        </button>
+    </div>
+  <!---->
+
+    <div class="content-wrapper" style="margin-left: 2em;margin-top: 0.5em !important; 
+      padding-top:0 !important;padding-bottom: 0 !important;margin-bottom: 0 !important;overflow-x: hidden;">
+
+        <div class="row mat-elevation-z2" style="overflow-x: hidden;padding-bottom: 0 !important;margin-bottom: 0 !important" data-aos="fade-up" >
+                <div class="col-xl-8" style="background-color: white; padding-top: 1vh; padding-bottom: 2vh !important">
+                  <div class="row ">
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 " style="justify-content: left; "> 
+                      <a  class="nav-link mat-elevation-z16" style="cursor: pointer;font-size: x-large;text-align: left;background-color: #357EC7;color: white;font-family: Arial, Helvetica, sans-serif;" class="nav-link" >{{searchres.datetext}}</a>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4" style="justify-content: right;" > 
+                      <a  class="nav-link mat-elevation-z16" style="font-size: x-large;text-align: right;background-color: #357EC7  ;color: white; font-family: solaiman " class="nav-link">{{searchres.place}}</a>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1" style="justify-content: left;align-items: left; ">                     
+                      <a class="prev2" style="color: #006994;font-size: xx-large; text-align: left;" >&#10094;</a>
+                    </div>
+                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10" style="justify-content: center;"> 
+                      <a  class="nav-link" style="font-size: xx-large;text-align: center;font-family: solaiman;color: #1974D2 ;">{{searchres.title}}</a>
+                    </div>
+                    <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1" style="justify-content: right;">
+                      <a class="next2" style="color: yellowgreen;font-size: xx-large;" >&#10095;</a>
+                    </div>                     
+                                     
+                </div>
+
+                <mat-grid-list cols="4" rowHeight={{rowHeight}}  gutterSize={{gutter_size_main}}>
+                  <mat-grid-tile
+                      *ngFor="let tile of tiles"
+                      [colspan]="tile.cols"
+                      [rowspan]="tile.rows"
+                      [style.background]="white">
+                     <img (load)="imageloaded()" *ngIf="tile.image && tile.image1verticle" (click)="openModal()"  style="height: 100%;" height="100%" src={{tile.image}}>                      
+                     <img (load)="imageloaded()" *ngIf="tile.image &&  !tile.image1verticle" (click)="openModal()" width="100%" style="height: 100%;" height="100%" src={{tile.image}}>                      
+                     <div *ngIf="tile.image &&  tile.additional_image" class="imgcontent">
+                      <h1>{{additional_image_num}}</h1>
+                    </div>
+                     
+                     <video *ngIf="tile.video" width="100%" height="100%" controls nodownload>
+                      <source src={{tile.video}} type="video/mp4">
+                      Your browser does not support the video tag.
+                     </video> 
+
+
+                  </mat-grid-tile>
+                </mat-grid-list>
+                <br/>
+
+                
+                <div class="row mat-elevation-z2" style="padding-bottom: 2vh !important;margin-left: 0rem;padding-right: 0rem;margin-right: 0.1rem;background-color: white;">
+                    <div class="col-xl-12" >
+                        <p style="text-align: justify;line-height: 1.4;
+                        font-size: 22px;font-family: solaiman;" >
+                            {{searchres.text}}
+                        </p>
+                    </div>
+                </div>    
+                       
+          </div>
+
+          <div class="col-xl-4 stretch-card grid-margin mat-elevation-z4" style="margin-bottom: 0;padding-top: 1vh;">
+           <div class="card " style="background-color: white;color: #03396c  ;" >
+            <h6 style="color: white;background-color: #38ACEC ; padding-left: 2em;padding-bottom: 1em !important;padding-top: 1em;
+              margin-bottom: 0 !important;font-family: merriweather">On This Date</h6>
+            
+              <div class="card-body" style="max-height: 56vh !important; overflow-y: scroll; padding-top: 0 !important;">
+                
+                <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between" 
+                  *ngFor="let c of relatedDate">
+                  <div class="pr-3" style="cursor: pointer;width: 20rem !important;" (click)="FormSubmit(c.id)" >
+                    <h6 style="font-family: solaiman; font-size: 18px;">{{c.title}} </h6>
+                    <div class="fs-12">
+                      <span class="mr-2" style="font-family: merriweather;color: gray;" > {{c.place}} </span>
+                    </div>
+                    <div class="fs-12">
+                      <span class="mr-2" style="font-family: merriweather;color:gray" > {{c.tdate}} </span>
+                    </div>
+                  </div>
+                  <div (click)="FormSubmit(c.id)"  style="cursor: pointer;width: 12rem !important;height: 6rem !important; justify-content: right;text-align: right;">
+                    <img *ngIf="!c.isverticle" class="imgbordersm" width="160" height="90" 
+                      src={{c.image1}}                    
+                      alt="thumb"                   
+                    />
+                    <img *ngIf="c.isverticle"  height="100" 
+                      src={{c.image1}}                    
+                      alt="thumb"                   
+                    />
+                  </div>
+                </div>
+              </div>
+              
+              <h6 style="color: white;background-color: #357EC7 ; padding-left: 2em;padding-bottom: 1em !important;
+              padding-top: 1em;margin-bottom: 0 !important;font-family: merriweather">Other Events of {{other_event_year}}</h6>
+              <div class="card-body" style="max-height: 56vh !important; overflow-y: scroll; padding-top: 0 !important;">
+                
+                <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between" 
+                  *ngFor="let c of relatedYear">
+                  <div class="pr-3 " style="cursor: pointer;width: 20rem !important;" (click)="FormSubmit(c.id)" >
+                    <h6 style="font-family: solaiman;font-size: 18px;">{{c.title}} </h6>
+                    <div class="fs-12">
+                      <span class="mr-2" style="font-family: merriweather;color: gray;" > {{c.place}} </span>
+                    </div>
+                    <div class="fs-12">
+                      <span class="mr-2" style="font-family: merriweather;color: gray;" > {{c.tdate}} </span>
+                    </div>
+                  </div>
+                  <div (click)="FormSubmit(c.id)"  style="cursor: pointer;;width: 12rem !important;height: 6rem !important; justify-content: right;text-align: right;">
+                    <img *ngIf="!c.isverticle" class="imgbordersm" width="160" height="90" 
+                      src={{c.image1}}                  
+                      alt="thumb"                   
+                    />
+                    <img *ngIf="c.isverticle"  height="100" 
+                      src={{c.image1}}                  
+                      alt="thumb"                   
+                    />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!----->
+  </div>
+  <!-- main-panel ends -->
+  <!-- container-scroller ends -->
+
+      <!-- partial:partials/_footer.html -->
+      <footer style="max-height: 8vh !important;">
+            <div class="footer-top"  style="padding-bottom: 5em;background-color: #006994 ; ">
+                <div class="container">
+                    <div class="row" style="text-align: center;justify-content: center;align-items: center;">
+                    <div class="col-sm-12" style="text-align: center;justify-content: center;align-items: center;">
+                        <h5 class="font-weight-normal mt-0 mb-1" style="font-family: merriweather;text-align: center;padding-bottom: 0 !important; margin-bottom: 0;">
+                        © 2021 @ <a href="#" target="_blank" class="text-white"> DNO</a>. All rights reserved.
+                        </h5>
+
+                    </div>
+                    <div class="col-sm-12" style="text-align: center;justify-content: center;align-items: center;padding-top:1vh">
+                        <h5 class="font-weight-normal  mb-1" style="font-family: merriweather;text-align: center;color: silver;">
+                        Bangladesh Navy Roll of Events
+                        </h5>
+
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+
+      </footer>
+    <!-- partial -->
+
+
+
+
+
+</div>

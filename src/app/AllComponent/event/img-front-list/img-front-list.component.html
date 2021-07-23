@@ -1,0 +1,150 @@
+
+  <div class="card" style="margin-top: 20px;margin-left: 30px;background-color: #006994;">
+    <div class="card-body" style="text-align: center;color:blanchedalmond;font-size: x-large;">
+      Front Image View List
+    </div>
+  </div>
+  
+    
+  <div fxLayout fxLayoutAlign="center center" style="margin-top: 20px;margin-left: 45px;">
+    <mat-form-field fxFlex="30%">
+      <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Title Filter">
+    </mat-form-field>
+    <mat-form-field fxFlex="30%" style="padding-left: 20px;">
+      <input matInput type="text" (keyup)="doFiltercategory($event.target.value)" placeholder="Category Filter">
+    </mat-form-field>
+    <mat-form-field fxFlex="30%" style="padding-left: 20px;">
+      <input matInput type="number" (keyup)="doFilterdate($event.target.value)" placeholder="Year Filter">
+    </mat-form-field>
+
+  </div>
+  <div class="row" style="margin-top: 20px;margin-left: 15px;">
+    <div class="col-md-12">
+      <mat-table [dataSource]="AllElement" multiTemplateDataRows class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+          <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="category">
+          <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+          <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.category}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef> title </mat-header-cell>
+          <mat-cell style="color:whitesmoke" *matCellDef="let Element"> {{Element.title}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="image1" >
+            <mat-header-cell *matHeaderCellDef> Image1 </mat-header-cell>
+            <mat-cell style="color:whitesmoke;height: 70px;" *matCellDef="let Element"> <img (click)="openModal(Element.id,1)" width="100%" style="margin-bottom: 10px;" src={{Element.image1}} />  </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="image1prio">
+            <mat-header-cell *matHeaderCellDef> front </mat-header-cell>
+            <mat-cell style="color:whitesmoke; padding: 0;margin: 0;" *matCellDef="let Element">   
+                <section class="example-section2" style="padding-left: 5px;">              
+                    <mat-checkbox (change)="imagepriochange(Element.id,1,Element.image1prio)" class="example-margin2" style="background-color: aliceblue;padding:0 !important;margin:0 !important" [(ngModel)]="Element.image1prio"></mat-checkbox>
+                </section>
+             </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="image2">
+            <mat-header-cell *matHeaderCellDef> Image2 </mat-header-cell>
+            <mat-cell style="color:whitesmoke; height: 70px;" *matCellDef="let Element"> <img (click)="openModal(Element.id,2)" width="100%"  style="margin-bottom: 10px;" src={{Element.image2}} />  </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="image2prio">
+            <mat-header-cell *matHeaderCellDef> front </mat-header-cell>
+            <mat-cell style="color:whitesmoke; padding: 0;margin: 0;" *matCellDef="let Element" >   
+                <section class="example-section2" style="padding-left: 5px;" *ngIf="Element.image2">              
+                    <mat-checkbox (change)="imagepriochange(Element.id,2,Element.image2prio)" class="example-margin2" style="background-color: aliceblue;padding:0 !important;margin:0 !important" [(ngModel)]="Element.image2prio"></mat-checkbox>
+                </section>
+             </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="image3">
+            <mat-header-cell *matHeaderCellDef> Image3 </mat-header-cell>
+            <mat-cell style="color:whitesmoke; height: 70px;" *matCellDef="let Element"> <img (click)="openModal(Element.id,3)" width="100%" style="margin-bottom: 10px;" src={{Element.image3}} />  </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="image3prio" >
+            <mat-header-cell *matHeaderCellDef> front </mat-header-cell>
+            <mat-cell style="color:whitesmoke; padding: 0;margin: 0;" *matCellDef="let Element">   
+                <section class="example-section2" style="padding-left: 5px;" *ngIf="Element.image3">              
+                    <mat-checkbox (change)="imagepriochange(Element.id,3,Element.image3prio)" class="example-margin2" style="background-color: aliceblue;padding:0 !important;margin:0 !important" [(ngModel)]="Element.image3prio"></mat-checkbox>
+                </section>
+             </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="image4">
+            <mat-header-cell *matHeaderCellDef> Image4 </mat-header-cell>
+            <mat-cell style="color:whitesmoke; height: 70px;" *matCellDef="let Element"> <img (click)="openModal(Element.id,4)" width="100%" style="margin-bottom: 10px;" src={{Element.image4}} />  </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="image4prio">
+            <mat-header-cell *matHeaderCellDef> front </mat-header-cell>
+            <mat-cell style="color:whitesmoke; padding: 0;margin: 0;" *matCellDef="let Element">   
+                <section class="example-section2" style="padding-left: 5px;" *ngIf="Element.image4">              
+                    <mat-checkbox (change)="imagepriochange(Element.id,4,Element.image4prio)" class="example-margin2" style="background-color: aliceblue;padding:0 !important;margin:0 !important" [(ngModel)]="Element.image4prio"></mat-checkbox>
+                </section>
+             </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="image5">
+            <mat-header-cell *matHeaderCellDef> Image5 </mat-header-cell>
+            <mat-cell style="color:whitesmoke; height: 70px;" *matCellDef="let Element"> <img (click)="openModal(Element.id,5)" width="100%" style="margin-bottom: 10px;" src={{Element.image5}} />  </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="image5prio" >
+            <mat-header-cell *matHeaderCellDef> front </mat-header-cell>
+            <mat-cell style="color:whitesmoke; padding: 0;margin: 0;" *matCellDef="let Element">   
+                <section class="example-section2" style="padding-left: 5px;" *ngIf="Element.image5">              
+                    <mat-checkbox (change)="imagepriochange(Element.id,5,Element.image5prio)" class="example-margin2" style="background-color: aliceblue;padding:0 !important;margin:0 !important" [(ngModel)]="Element.image5prio"></mat-checkbox>
+                </section>
+             </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row style="background-color:#006994" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+      </mat-table>
+      <mat-paginator [pageSize]="10" [pageSizeOptions]="[2, 4, 6, 10, 20]"></mat-paginator>
+    </div>
+  </div>
+  
+  <br />
+  <br />
+
+  
+
+<div id="modal_1" class="modal">
+    <div style="z-index: 300;right: 0;top:0; position:absolute; background-color: #171717;" name="fontStyle" aria-label="Font Style">
+
+        <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+          <mat-icon (click)="modalclose()" style="color: darkgray; width: 1.5em;font-size: xx-large; font-weight: bolder;">close</mat-icon>
+        </button>
+      </div>
+
+   
+      <div  fxLayout="row" fxLayoutGap="5px" style="z-index: 2;;width: 100%;margin-top: 0;height: 85vh;">
+        <div fxFlex="100" style="width: 100%;position: relative;;justify-content: center;text-align: center;">
+           <img  *ngIf="!isverticalmodal"    style="justify-content: center;text-align: center;" width="63%" height="100%"  id="img01" [src]="imageUrl">
+            <img  *ngIf="isverticalmodal" class="modal-content2"  id="img01" [src]="imageUrl">
+            
+            <div   class="imgoverlay3" style="z-index: 3;position:relative ;bottom:40px;" >
+              <h5 style="color:white;padding-top: 10px;">{{current_caption}}</h5>
+            </div>
+            <!--
+            <div id="caption" class="imgoverlay2"></div>
+            -->
+        </div>
+      </div>
+  
+
+  
+  
+  
+
+  
+
+  
+  </div>
+  
+  
+  
+  
+  
+<ngx-spinner></ngx-spinner>
+  

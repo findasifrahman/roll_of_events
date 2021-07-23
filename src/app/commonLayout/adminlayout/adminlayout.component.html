@@ -1,0 +1,46 @@
+<mat-sidenav-container fullscreen style="background-color: black; overflow-y: hidden !important;">
+    <mat-sidenav style="margin-top: 40px;background-color: #006994;" mode="side" #sidenav opened position="start" id="sidebar"
+    
+       [opened]="screenWidth > 840" [mode]="(screenWidth > 840) ? 'side' : 'over'" 
+
+       fixedInViewport="true">
+       <header style="padding-top: 40px;padding-bottom: 30px;background-color: #006994;">
+        <a href="#" style="font-size: 18px;color:yellow">Roll of Events Admin</a>
+
+      </header>
+      
+       <li class="nav">
+        <a class="nav-link" style="display: inline-flex;"   [routerLink]='["/"]'><i><mat-icon aria-hidden="false">home</mat-icon></i>Home</a>
+      </li>
+
+
+      <li class="nav">
+        <a [routerLink]='["/addEvent"]' [hidden]='hideNav' class="nav-link" style="display: inline-flex;" ><i><mat-icon aria-hidden="false">launch</mat-icon></i>Add Event</a>
+      </li>
+      <li class="nav">
+        <a [routerLink]='["/listEvent"]' [hidden]='hideNav' class="nav-link" style="display: inline-flex;" ><i><mat-icon aria-hidden="false">block</mat-icon></i>Event List</a>
+      </li>   
+
+
+      <li class="nav">
+        <a [routerLink]='["/addrelated"]' [hidden]='hideNav' class="nav-link" style="display: inline-flex;" ><i><mat-icon aria-hidden="false">launch</mat-icon></i>Add Synonym</a>
+      </li>
+      <li class="nav">
+        <a [routerLink]='["/listrelated"]' [hidden]='hideNav' class="nav-link" style="display: inline-flex;" ><i><mat-icon aria-hidden="false">block</mat-icon></i>Synonym List </a>
+      </li>   
+
+      <li class="nav">
+        <a [routerLink]='["/frontimage"]' [hidden]='hideNav' class="nav-link" style="display: inline-flex;" ><i><mat-icon aria-hidden="false">list</mat-icon></i>Front Image List </a>
+      </li>  
+
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color: '#ffffff';">
+
+      <div class="main-content" > 
+            <router-outlet></router-outlet>
+       </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+

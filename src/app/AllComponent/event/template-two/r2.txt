@@ -1,0 +1,255 @@
+<div class="container-scroller">
+    <div class="main-panel">
+      <!-- partial:partials/_navbar.html -->
+      <!-- partial:partials/_navbar.html -->
+      <mat-toolbar color="primary" style="background-color:dodgerblue; padding-top: 0.2em;padding-bottom: 0.1em;">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="margin-left: 1.7em;">
+          <mat-icon  onmouseover="" style="cursor: pointer;" (click)="gotohome()">menu</mat-icon>
+        </button>
+        <span (click)="gotohome()"  onmouseover="" style="cursor: pointer;" style="font-size: medium;">Bangabandhu and Bangladesh Navy</span>
+        <span class="example-spacer"></span>
+      
+        <button mat-icon-button class="example-icon" (click)="gotohome()" aria-label="Example icon-button with share icon">
+          <mat-icon style="font-size: medium;">home</mat-icon>
+        </button>
+      </mat-toolbar>
+      <!-- partial -->
+      <div class="flash-news-banner" style="padding-left: 0 !important;margin-left: 0 !important;">
+        <div class="container" style="padding-left: 3em !important;margin-left: 0 !important;">
+          <div class="d-lg-flex align-items-center justify-content-between" >
+            <div class="d-flex align-items-center">
+              <span class="badge badge-dark mr-3">Flash news</span>
+              <p class="mb-0">
+                Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s.
+              </p>
+            </div>
+            
+            <div class="d-flex ">
+              <span class="mr-3 text-danger">{{tDate}}</span>
+              <span class="text-danger">DNO, Bangladesh Navy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-wrapper" style="margin-left: 2em;">
+        <div class="container">
+          <div class="row" data-aos="fade-up">
+            <div class="col-xl-8">
+                    <div class="row">                     
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8" >                       
+                            <img width="100%" (click)="showLightbox(0)" height="220" src={{searchres.image1}}>
+                        </div>                     
+                          <div class="col-xl-4 col-lg-8 col-md-4 col-sm-4" style="color:whitesmoke;">                       
+                            <img width="100%" (click)="showLightbox(1)" height="100" src={{searchres.image2}}>
+                            <br/><br/>
+                            <img width="100%" (click)="showLightbox(2)" height="100" src={{searchres.image1}}>
+                          </div>
+                         
+                  </div>
+                  <br/>
+                  <div class="row">
+                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10" style="justify-content: left;"> 
+                      <a  class="nav-link" style="font-size: larger;text-align: left;font-weight: bold;">{{searchres.title}}</a>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2"  > 
+                      <a  class="nav-link" style="font-size: medium;text-align: right;">{{searchres.date}}</a>
+                    </div>
+                  </div>
+                  
+                  <div class="row" style="margin-left: 0rem;padding-right: 1.1rem;">
+                      <div class="col-xl-12" >
+                          <p style="text-align: justify;" class="mb-0">
+                              {{searchres.text}}
+                          </p>
+                      </div>
+                  </div>    
+                  <div class="row" style="margin-left: 0rem;padding-right: 1.1rem;" *ngIf="vidpresent">
+                    <div class="col-xl-12" style="justify-content: center;text-align: center;" >
+                        <video width="420" height="240" controls>
+                            <source src={{searchres.video}} type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                  </div>         
+            </div>
+
+            <div class="col-xl-4 stretch-card grid-margin">
+              <div class="card bg-dark text-white">
+                <div class="card-body">
+                  <h2>Related</h2>
+                  <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between" 
+                    *ngFor="let c of relatedNews">
+                    <div class="pr-3" style="width: 20rem !important;" (click)="FormSubmit(c.id)" >
+                      <h5>{{c.title}} </h5>
+                      <div class="fs-12">
+                        <span class="mr-2"> Views </span>{{c.view}}
+                      </div>
+                    </div>
+                    <div class="rotate-img" style="width: 12rem !important;height: 6rem !important; justify-content: right;text-align: right;">
+                      <img
+                        src={{c.image1}}
+                        
+                        alt="thumb"
+                        
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" data-aos="fade-up">
+            <div class="col-lg-3 stretch-card grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h2>Category</h2>
+                  <ul class="vertical-menu">
+                    <li><a (click)="category71()">1971-1979</a></li>
+                    <li><a (click)="category80()">1980-1989</a></li>
+                    <li><a (click)="category90()">1990-1999</a></li>
+                    <li><a (click)="category00()">2000-2009</a></li>
+                    <li><a (click)="category10()">2010-2019</a></li>
+                    <li><a (click)="category20()">2020-</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9 stretch-card grid-margin">
+              <div class="card">
+                <div class="card-body" *ngFor="let c of categoryNewsArr">
+                  <div class="row" (click)="FormSubmit(c.id)" >
+                    <div class="col-sm-4 grid-margin">
+                      <div class="position-relative">
+                        <div class="rotate-img" style="height: 10rem !important;">
+                          <img
+                            src={{c.image1}}
+                            
+                            alt="thumb"
+                            class="img-fluid"
+                          />
+                        </div>
+                        <div class="badge-positioned">
+                          <span class="badge badge-danger font-weight-bold"
+                            >DNO-{{selectedCategory}}</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-8  grid-margin">
+                      <h2 class="mb-2 font-weight-600">
+                        {{c.title}}
+                      </h2>
+                      <div class="fs-13 mb-2">
+                        <span class="mr-2">views </span>{{c.view}}
+                      </div>
+                      <p class="mb-0">
+                        Lorem Ipsum has been the industry's standard dummy
+                        text ever since the 1500s, when an
+                      </p>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <!-- main-panel ends -->
+      <!-- container-scroller ends -->
+
+      <!-- partial:partials/_footer.html -->
+      <footer>
+        <div class="footer-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-9">
+                <img src="assets/images/logo.svg" class="footer-logo" alt="" />
+                <h5 class="font-weight-normal mt-4 mb-5">
+                  DNO-Bangladesh Navy
+                </h5>
+                <ul class="social-media mb-3">
+                  <li>
+                    <a href="#">
+                      <i class="mdi mdi-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="mdi mdi-youtube"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="mdi mdi-twitter"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-3">
+                <h3 class="font-weight-bold mb-3">CATEGORIES</h3>
+                <div class="footer-border-bottom pb-2">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 font-weight-600">2020-</h5>
+                    <div class="count">1</div>
+                  </div>
+                </div>
+                <div class="footer-border-bottom pb-2 pt-2">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 font-weight-600">2010-2019</h5>
+                    <div class="count">1</div>
+                  </div>
+                </div>
+                <div class="footer-border-bottom pb-2 pt-2">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 font-weight-600">2000-1009</h5>
+                    <div class="count">1</div>
+                  </div>
+                </div>
+                <div class="footer-border-bottom pb-2 pt-2">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 font-weight-600">1990-19999</h5>
+                    <div class="count">1</div>
+                  </div>
+                </div>
+                <div class="pt-2">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 font-weight-600">1980-1989</h5>
+                    <div class="count">1</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="d-sm-flex justify-content-between align-items-center">
+                  <div class="fs-14 font-weight-600">
+                    © 2020 @ <a href="#" target="_blank" class="text-white"> Intricate Lab</a>. All rights reserved.
+                  </div>
+                  <div class="fs-14 font-weight-600">
+                    by <a href="https://www.bootstrapdash.com/" target="_blank" class="text-white">DNO, Bangladesh Navy</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- partial -->
+    </div>
+  </div>
+
+  <ng-image-fullscreen-view
+    [images]="imageObject"
+    [imageIndex]="selectedImageIndex"
+    [show]="showFlag"
+    (close)="closeEventHandler()"></ng-image-fullscreen-view>

@@ -1,0 +1,125 @@
+td.mat-cell {
+    /* row padding */
+    padding: 16px 0;
+    /* row border */
+    border-bottom: 1px solid #ffa600;
+    border-top: 1px solid #ffa600;
+}
+
+tr.mat-row {
+    padding: 16px 0;
+    /* row border */
+    border: 2px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+.mat-column-title {
+    flex: 2 2 15%;
+
+}
+.mat-column-id {
+    flex: 0 0 6%;
+}
+.mat-column-category {
+    flex: 0 0 7%;
+    margin-right: 5px;
+}
+.mat-column-image1,.mat-column-image2,.mat-column-image3,.mat-column-image4,.mat-column-image5 {
+  flex: 0 0 10%;
+  margin-right: 5px;
+}
+.example-margin2 {
+    margin: 0 0px;
+  }
+.example-section2 {
+
+align-content: center;
+align-items: center;
+height: 4px;
+} 
+.select-all{
+margin: 5px 17px;
+} 
+
+.imgoverlay3 {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.9); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 100%;
+  padding: 0%;
+  height: 17vh;
+  justify-content: center;
+  text-align: center;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 300; /* Sit on top */
+    padding-top: 1%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    //overflow: hidden; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,1); /* Black w/ opacity */
+  }
+  
+  /* Modal Content (image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    //width: 99%;
+    max-width: 78%;//140vh;
+    max-height: 78vh;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+
+  
+
+  /* Add Animation */
+  .modal-content, #caption {  
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  
+ 
+  
+  .caption-container {
+    text-align: center;
+    background-color: black;
+    padding: 2px 16px;
+    color: white;
+  }
+
+ 
+
+  

@@ -1,0 +1,352 @@
+
+
+    <h1 style="font-family: kalpurush;background-color: whitesmoke; text-align: center; color: #006994;
+    font-weight: bold;padding-bottom:0 !important; margin-bottom: 0 !important;margin-top: 1vh !important;font-size: 3em;">
+    BANGLADESH NAVY'S ROLL OF EVENTS</h1>
+
+
+    <div style="margin-bottom: 0; width: 40em;width: 100%;padding-top: 1vh;
+    background-color: whitesmoke;padding-bottom: 0 !important; " >
+      <form (click)="FormSubmit()"  class="example-form row" 
+        style="margin: 0 !important;padding: 0 !important; text-align: center; justify-content: center; 
+          align-items: center;width: 100% !important;" >
+        <div class="input-group " style="max-width: 40em;margin: 0 !important;padding: 0 !important; 
+        width: 100%; ">
+            
+            <mat-form-field class="example-full-width my-form-field " appearance="outline" 
+              style="width: 100% !important; margin-bottom: 0 !important;">
+              <input type="text" (keydown.enter)="FormSubmit()"  matInput  
+              style="width: 100% !important;font-size: medium;" placeholder="Search" [formControl]="planClient" 
+                    [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" 
+                    style="margin: 0 !important;padding: 0 !important;font-size: small;padding-bottom: 0; padding-top: 0;">
+                        <mat-option *ngFor="let client of filteredOptions | async" [value]="client">
+                        {{client}}
+                    </mat-option>
+                </mat-autocomplete>
+                <button mat-button  matSuffix mat-icon-button>
+                  <mat-icon style="font-size: x-large;padding-top: 0.05em;display: inline;">search</mat-icon>
+                </button>
+            </mat-form-field>                                      
+        </div>
+      </form> 
+
+    </div>
+    <div style="justify-content: center;text-align: center;margin-bottom: 1vh;">
+      <button mat-button (click)="imageClick()" [ngClass]="[bntStyle1]" class="txt"  style="display: inline;padding-top: 0 !important; margin-top: 0 !important;">
+        <span style="font-family:kalpurush;font-size: 16px;">Image Search</span>
+      </button>
+  
+      <button mat-button (click)="videoClick()" [ngClass]="[bntStyle2]" class="txt" style="display: inline;padding-top: 0 !important; margin-top: 0 !important;">
+        <span style="font-family:kalpurush;font-size: 16px;">Video Search</span>
+      </button>
+    </div>
+
+    <!--
+  <div style="margin-bottom: 0; width: 55em;width: 100%;padding-top: 1vh;background-color: whitesmoke; ">
+    <form (click)="FormSubmit()"  class="example-form row" 
+      style="margin: 0 !important;padding: 0 !important; text-align: center; justify-content: center; 
+        align-items: center;width: 100% !important;" >
+      <div class="input-group" style="max-width: 55em;margin: 0 !important;padding: 0 !important; 
+      width: 100%;">
+          
+          <mat-form-field class="example-full-width my-form-field" appearance="outline"
+            style="width: 100% !important;">
+            <input type="text" (keydown.enter)="FormSubmit()"  matInput  
+            style="width: 100% !important;font-size: medium;" placeholder="Search" [formControl]="planClient" 
+                  [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete" 
+                  style="margin: 0 !important;padding: 0 !important;font-size: small;">
+                      <mat-option *ngFor="let client of filteredOptions | async" [value]="client">
+                      {{client}}
+                  </mat-option>
+              </mat-autocomplete>
+              <button mat-button  matSuffix mat-icon-button>
+                <mat-icon style="font-size: x-large;padding-top: 0.05em;">search</mat-icon>
+              </button>
+          </mat-form-field>                                      
+      </div>
+    </form> 
+  </div>
+-->
+<div class="mat-elevation-z8"  style="margin-left: 1em;margin-right: 1em;margin-bottom: 5vh;height: auto;">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px"  >
+
+  <div fxFlex="30" fxShow.sm="false" fxHide.xs="true" fxShow.md="true"   fxShow.gt ="true"  style="padding-left: 0em !important; padding-bottom: 0 !important;height: 46vh; ">
+    <img width="100%" height="100%"  src="../../../assets/mujib100.png" />
+  </div> 
+  <div fxFlex="30" fxShow.sm="true" fxShow.md="false"   fxHide.gt-md="true"  style="padding-left: 0em !important; padding-bottom: 0 !important; ">
+    <img width="100%"   src="../../../assets/mujib100.png" />
+  </div>
+   <!--
+  <mat-grid-list cols="11" fxLayout.xs="column" rowHeight="24vh"  gutterSize="1em" style="margin-bottom: 5vh;margin: 0em;">
+    <mat-grid-tile    [colspan]="3" [rowspan]="2" style="width: 100%;height:100%;" >
+     
+    </mat-grid-tile>
+
+    
+      <div class="inline " style="width: 100%;height:100%;">
+        <img  @fadeInAnimation  id="img01" [src]="slideshow_image"  width="100%" height="100%">
+      </div>
+    -->
+    <div fxFlex="40"  style="padding-left: 0em !important; padding-bottom: 0 !important;width: 100%;height: 46vh; ">
+
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="max-width: 100%; max-height: 100%;height: 46vh">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" style="height: 100%;width: 100%;">
+          <div class="carousel-item active" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[0].image}} alt="First slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%" src={{imageObject[1].image}} alt="Second slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[2].image}} alt="Third slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[3].image}} alt="Third slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[4].image}} alt="Third slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[5].image}} alt="Third slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[6].image}} alt="Third slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[7].image}} alt="Third slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[8].image}} alt="Third slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[9].image}} alt="Third slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[10].image}} alt="Third slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[11].image}} alt="Third slide">
+          </div>
+          <div class="carousel-item" style="height: 100%;width: 100%;">
+            <img class="" width="100%" height="100%"  src={{imageObject[12].image}} alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" style="color: black;background-color: black;" aria-hidden="true"></span>
+          <span class="sr-only" style="color: black;background-color: black;">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"  style="color: black;background-color: black;"></span>
+          <span class="sr-only"  style="color: black;background-color: black;">Next</span>
+        </a>
+      </div>
+ 
+    </div>
+
+    <div fxFlex="30" fxHide.lt-md="true" style="position: relative;padding-left: 0em !important; padding-bottom: 0 !important;height: 46vh; width: 100%; ">
+
+      <mat-grid-list cols="4" rowHeight="50%"  gutterSize="0em">
+        <mat-grid-tile
+          [colspan]="2"
+          [rowspan]="1"
+        >
+          <img width="100%"  height="100%" src="../../../assets/bangabandhu/2.jpg" />
+        </mat-grid-tile>
+        <mat-grid-tile
+        [colspan]="2"
+        [rowspan]="1"
+      >
+        <img width="100%"  height="100%" src="../../../assets/bangabandhu/3.jpg" />
+      </mat-grid-tile>
+        <mat-grid-tile
+          [colspan]="2"
+          [rowspan]="1"
+        >
+          <img width="100%"  height="100%" src="../../../assets/bangabandhu/4.jpg" />
+        </mat-grid-tile>
+        <mat-grid-tile
+        [colspan]="2"
+        [rowspan]="1"
+            >
+          <img width="100%"  height="100%" src="../../../assets/bangabandhu/5.jpg" />
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div  class="imgoverlay" style="cursor: pointer;" (click)="openModal()">
+        <h1>Full Photo Archieve</h1>
+      </div>
+  </div>
+
+
+  
+  </div>
+  <h4 (click)="menueventsClick('mujib_borsho')" style="cursor: pointer;color:#006994;padding-top:0.5em;margin-top: 0;padding-bottom: 0.5em ;text-align: center;
+  font-family: merriweather;font-weight: bold;background-color: white;  " >Bangabandhu and Bangladesh Navy</h4>
+</div>
+
+
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" style="flex-direction: row;flex:1;margin-bottom: 2vh;margin-right: 2px !important;margin-left:1em ;padding-right: 0 !important;">
+
+    <div fxFlex="23" class="mat-elevation-z4" style="padding-left: 0em !important; padding-bottom: 0 !important; 
+    padding-right: 0 !important;width: 100%;">
+      <div class="card mat-elevation-z8" style="padding: 0 !important;margin: 0 !important" (click)="searchBangabandhu()">
+        <h4 style="color:#006994;padding-top:0.5em;padding-bottom: 0.5em ;text-align: center;
+        font-family: merriweather;  font-weight: 900;" >CHIEF OF NAVAL STAFF</h4>
+       <hr style="padding-top:0; margin-top:0;margin-bottom: 0;padding-bottom: 0;background-color: rgb(255,215,0);"/>
+ 
+        <div class="" style="max-height: 86vh !important;height: 62vh;
+        padding-top: 0 !important;margin-top: 0 !important;background-color: #006994;  
+        padding-right: 0 !important; padding-left: 0 !important;" (click)="cnsClick('ADMIRAL M SHAHEEN IQBAL, NBP, NUP, ndc, afwc, psc')">
+            <img class="card-img-top imgframe3" src="../../../assets/cns_current.jpg" width="100%" height="100%" alt="Bangabandhu" >
+            <div class="imgoverlay2" style="cursor: pointer;">
+              <h5 class="card-text"  style="padding-top: 2vh;padding-left: 0.5em;">ADMIRAL M SHAHEEN IQBAL, NBP, NUP, ndc, afwc, psc</h5>
+              
+              <a  class="btn btn-outline-primary btn-sm" style="bottom: 1vh !important;border-color: darkgrey;" role="button" >View Full</a>
+         
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="48" class="mat-elevation-z4"   style="width: 100%;padding-left: 0em !important; padding-bottom: 0 !important; padding-right: 0 !important;">
+      <div class="card " style="padding: 0 !important;margin: 0 !important" >
+        <h4 style="color:#006994;padding-top:0.5em;padding-bottom: 0.5em ;text-align: center;
+        font-family: merriweather;font-weight: bold;  " >OUR LEGACIES</h4>
+            <hr style="padding-top:0; margin-top:0;margin-bottom: 0;padding-bottom: 0;background-color: rgb(255,215,0);"/>
+            <div (click)="showpastev()" class="" style="max-height: 86vh !important; height: 62vh !important;
+         padding-top: 0 !important;margin-top: 0 !important;  padding-right: 0 !important; padding-left: 0 !important;">
+         
+              <img (load)="imageloaded()"  [@myAwesomeAnimations2]="curreent_animation2"   [src]="randomimageUrl" width="100%" height="100%" style="max-width: 100%; max-height:100%;">
+              <div class="imgoverlay2" style="cursor: pointer;">
+                <h5 class="" style="padding-left: 0em;margin-bottom: 1vh;padding-top: 2vh;">{{randomimagetext}}</h5>
+                <div class="fs-12" style="margin-top: 1.2em;">
+                  <span class="mr-2" style="font-family: merriweather;color: darkgrey" > {{randomImagedate}} </span>
+                </div>
+                <div class="fs-12">
+                  <span class="mr-2" style="font-family: merriweather;color: darkgrey" > {{randomimageplace}} </span>
+                </div>
+              </div>
+
+         </div>
+      </div>
+      
+    </div> 
+
+    <div fxFlex="29" class="mat-elevation-z4" style="padding-right: 0;">
+      <div class="card " style="width: 100%;padding: 0 !important;margin: 0 !important;background-color: white;" >
+        <h4 style="color:#006994;padding-top:0.5em;padding-bottom: 0.5em ;text-align: center;
+        font-family: merriweather; font-weight: bold;  " >RECENT EVENTS</h4>
+            <hr style="padding-top:0; margin-top:0;margin-bottom: 0;padding-bottom: 0;background-color: rgb(255,215,0);"/>
+       
+            <div class="card-body" style="overflow-x: hidden;max-height: 86vh !important;height: 62vh; overflow-y: scroll; padding-top: 0 !important;">
+                  
+              <div class="d-flex  pt-1 pb-2 align-items-center justify-content-between" 
+                *ngFor="let c of recentlyUploaded">
+                  <div class="pr-3" style=" padding-top: 0;cursor: pointer;width: 20rem !important;" (click)="FormSubmit1(c.id)" >
+                    <h6 style="font-family: solaiman; font-size: 18px;color: #006994;">{{c.title}} </h6>
+                    <div class="fs-12">
+                      <span class="mr-2" style="font-family: merriweather;color: gray;" (click)="dateval(c.date)"> {{c.place}} </span>
+                    </div>
+                    <div class="fs-12">
+                      <span class="mr-2" style="font-family: merriweather;color:gray" (click)="dateval(c.date)"> {{c.date}} </span>
+                    </div>
+                    <hr style="padding-top:0; margin-top:8px;margin-bottom: 0;padding-bottom: 0;background-color: darkgrey;width: 230%;"/>
+        
+                  </div>
+                  
+                  <div (click)="FormSubmit1(c.id)"  style="cursor: pointer;width: 12rem !important;height: 7.8rem !important; justify-content: right;text-align: right;">
+                    <img *ngIf="!c.isverticle" class="imgbordersm" width="160" height="90" 
+                      src={{c.image1}}                    
+                      alt="thumb"                   
+                    />
+                    <img *ngIf="c.isverticle" class="imgbordersm"  height="90" 
+                      src={{c.image1}}                    
+                      alt="thumb"                   
+                    />
+                 
+                  </div>
+                  
+              </div>
+            </div>
+       
+
+
+      </div>
+  </div>
+
+
+  </div>
+
+
+
+
+
+<div id="modal_1" class="modal">
+  <div style="z-index: 100;right: 0;top:0; position:absolute; background-color: #171717;" name="fontStyle" aria-label="Font Style">
+    <button (click)="playslide()" mat-icon-button color="warn" style="border-width: thick;border-color: whitesmoke;" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: darkgray;border-width: 3px;border-color: whitesmoke;">{{play_pause_icon}}</mat-icon>
+    </button>
+    <button (click)="zoomIn()" mat-icon-button color="warn" style="border-width: thick;border-color: whitesmoke;" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: darkgray;border-width: 3px;border-color: whitesmoke;">zoom_in</mat-icon>
+    </button>
+    <button (click)="zoomOut()" mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+      <mat-icon style="color: darkgray;">zoom_out</mat-icon>
+    </button>
+      <a href={{imageUrl}} id="ll" target="_self" mat-icon-button color="warn" 
+      aria-label="Example icon button with a heart icon" download>
+        <mat-icon style="color: darkgray;">save</mat-icon>
+      </a>
+      <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+        <mat-icon (click)="modalclose()" style="color: darkgray; width: 1.5em;font-size: xx-large; font-weight: bolder;">close</mat-icon>
+      </button>
+    </div>
+    <div style="z-index: 100;left: 1em;top:0; position:absolute; background-color: black;" name="fontStyle" aria-label="Font Style">
+      <h5 style="color:rgba(255,255,255,0.8);">{{current_imageindex}}</h5>
+    </div>
+ 
+    <div  fxLayout="row" fxLayoutGap="5px" style="z-index: 2;;width: 100%;margin-top: 0;height: 85vh;">
+      <div fxFlex="100" style="width: 100%;position: relative;;justify-content: center;text-align: center;">
+         <img  *ngIf="!isverticalmodal" [@myAwesomeAnimations]="curreent_animation"    style="justify-content: center;text-align: center;" width="63%" height="100%"  id="img01" [src]="imageUrl">
+          <img  *ngIf="isverticalmodal" class="modal-content2"  id="img01" [src]="imageUrl">
+     
+
+          <div *ngIf="showCaption"  class="imgoverlay3" style="z-index: 3;position:relative ;bottom:40px;" >
+            <h5 style="color:white;padding-top: 10px;">{{current_caption}}</h5>
+          </div>
+          <!--
+          <div id="caption" class="imgoverlay2"></div>
+          -->
+      </div>
+    </div>
+
+
+    <a class="prev3" (click)="minusSlides()">&#10094;</a>
+    <a class="next3" (click)="plusSlides()">&#10095;</a>
+
+
+
+
+      <div *ngIf="thumbnill_grid" style="z-index: 100;margin-bottom: 0px;right: 0px;bottom:0; position:absolute; background-color: #171717;width: 100%; justify-content: center;text-align: center;" name="fontStyle" aria-label="Font Style">
+      
+        <div fxFlex="10" *ngFor="let c of imageObject">
+          <img (click)="modal_thumbnill_click(c.index)"  class="imgbordersm" [src]="c.image" style=""  height="80px" width="100%"  alt="Nature and sunrise">
+        </div>
+      </div>
+
+      <div *ngIf="caption_button" style="z-index: 100;right: 0;bottom:80px; position:absolute; background-color: transparent;" name="fontStyle" aria-label="Font Style">
+        <button (click)="captionHide()" mat-button style="background-color: #171717;padding-right: 5px;padding-bottom: 2px;color: darkgray; border-radius: 0;" >
+          {{ Hide_Caption_Text}}
+        </button>
+        <button (click)="gridhide()" mat-button style="background-color: #171717;;margin-left: 5px;padding-right: 5px;padding-bottom: 2px;color: darkgray;border-radius: 0;" >
+           {{Hide_Grid_Text}}
+        </button>
+      </div>
+
+</div>
+

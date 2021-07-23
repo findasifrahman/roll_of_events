@@ -1,0 +1,24 @@
+<div class="card" style="margin-top: 20px;margin-left: 45px;background-color: rgba(2, 2, 2, 0.9);">
+    <div class="card-body" style="text-align: center;color:blanchedalmond;font-size: larger;">
+      Add Related Word
+    </div>
+  </div>
+  
+  <br />
+  <form class="example-container" [formGroup]="Forms" style="margin-top: 20px;margin-left: 45px;">
+      <mat-form-field floatLabel="options.value.floatLabel">
+        <input matInput placeholder="Word" type="Text" formControlName="word" required>
+      </mat-form-field>
+      <mat-form-field floatLabel="options.value.floatLabel">
+        <input matInput placeholder="Related Word" type="Text" formControlName="related" required>
+      </mat-form-field>
+
+      <br/>
+      <div class="input-group btn-group">
+        <button type="submit" (click)="FormSubmit()" class="form-control btn" style="height:40px;width:425px;background-color:black;color:whitesmoke" [disabled]="!Forms.valid">Submit</button>
+      </div>
+  
+  </form>
+  
+  <br /><br />
+  

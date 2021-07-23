@@ -1,0 +1,380 @@
+
+.btn-default {
+  color: black;
+  background-color: transparent;
+
+}
+.btn-change {
+  color: white;
+  background-color: #006994 ;
+}
+
+.btn-default2 {
+  color: white;
+  //background-color: transparent;
+
+}
+.btn-change2 {
+  color: lawngreen;
+  //background-color: gray;
+}
+
+.mat-menu-item:hover{
+  //background-color:grey;
+  color: purple;
+}
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+
+/* Border */
+// mat-icon-stepper selected color change 
+/* default and hover color */
+
+
+/* focused color */
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: green;
+}
+
+/* floating label color */
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-label { 
+  color: green; 
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: white;
+}
+
+
+.example-full-width {
+  width: 100%;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgb(16, 134, 138);
+  border-top: red;
+  padding: 0 !important;
+  margin: 0 !important
+}
+/* Font color */
+input.mat-input-element {
+  color: #003066;
+  padding: -2.25 !important;
+  margin: 0 !important
+}
+.my-form-field .mat-form-field-wrapper{
+  width: 100%;
+  margin-bottom: -1.25em !important;
+  padding-top: -1.25em !important;
+  //border-width: 200px;
+ // height: 58px;
+ // padding-top: -18px;
+  //background-color: transparent;
+ // border-color: rgb(138, 5, 5);
+ // border-width: 20px;
+  //border-color: #003066;
+}
+////////@at-root/@at-root
+.mat-form-field-label-wrapper { top: -1em; }
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
+/////////////////////////////
+div.mat-form-field-infix {
+  padding: 0em 0 !important;
+  padding-bottom: 0.5em !important;
+}
+.mat-form-field-flex{
+  padding-top: -25px;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  color: rgb(38, 49, 206);
+}
+
+
+.txt:hover {
+  //text-decoration: underline;
+  border-bottom: 2px solid #fff;
+  border-radius: 0;
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 1%; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  //overflow: hidden; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,1); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  //width: 99%;
+  max-width: 78%;//140vh;
+  max-height: 78vh;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.modal-content2 {
+  margin: auto;
+  display: block;
+  //width: 99%;
+  //max-width: 38%;//140vh;
+  max-height: 72vh;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+/* Caption of Modal Image */
+/*#caption {
+  //margin: auto;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  color: #ccc;
+  padding: 5px 0;
+  height: 2vh;
+}/*
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.close1 {
+  position: absolute;
+  top: 15px;
+  right: 6
+  5px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+.prev3,
+.next3 {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  background-color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next3 {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev3:hover,
+.next3:hover {
+  background-color: rgba(255, 255, 0, 0.8);
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+img:hover
+{
+  opacity: 0.9;
+  filter: alpha(opacity=80);
+}
+img{
+  border: 3px  solid #888;
+  border-radius: 0px;
+  background: #eee;
+  padding: 8px
+}
+
+.mat-menu-item {
+  max-width: none !important;
+}
+.my-class{
+  max-width: none !important;
+  max-height: none !important;
+}
+.imgframe2{
+  border: 1px  solid #888;
+  border-radius: 0px;
+  background: #eee;
+  padding: 1px
+}
+.imgframe3{
+  border: 3px  solid #d4af37;
+  border-radius: 0px;
+  background: #eee;
+  padding: 8px
+}
+border-bottom-blue{
+  border-bottom-width: 3px ;
+  color: #003066;
+  
+}
+
+
+.imgoverlay {
+  position: absolute; /* Position the background text */
+  bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.7); /* Black background with 0.5 opacity */
+  color: #f1f1f1; /* Grey text */
+  width: 100%; /* Full width */
+  padding: 20px; /* Some padding */
+  justify-content: center;
+  text-align: center;
+
+}
+.imgoverlay2 {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.7); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 100%;
+  padding: 0%;
+  height: 17vh;
+  justify-content: center;
+  text-align: center;
+}
+.imgoverlay3 {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.9); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 100%;
+  padding: 0%;
+  height: 17vh;
+  justify-content: center;
+  text-align: center;
+}
+//////////////////////////////slideshow
+.fade-in-image {
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+///////////////////////////////////slideshow end
+
+.carousel {
+  /* any dimensions are fine, it can be responsive with max-width */
+  //width: 300px;
+  //height: 350px;
+}
+
+.carousel-inner {
+  /* make sure your .items will get correct height */
+  height: 100%;
+  width: 100%;
+}
+
+.item {
+  background-size: cover;
+  background-position: 50% 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.item img {
+  visibility: hidden;
+}
+.imgbordersm{
+  border: 2px  solid #888;
+  border-radius: 0px;
+  background: #eee;
+  padding: 4px
+}
+
+mat-sidenav-container {
+  //height: calc(100vh - 65px);
+}
+
